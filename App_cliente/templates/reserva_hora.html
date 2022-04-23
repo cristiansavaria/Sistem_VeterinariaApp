@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Reserva horas {% endblock %}
+
+{% block contenido %}
+
+
+<div>
+    <h2 class="text-center mt-4">Reserva tu Hora</h2>
+</div>
+<div class="seleccion">
+
+    <hr>
+    <div class="dropdown mt-4">
+        <h5>Servicio:</h5>
+
+        <button class="btn btn-secondary dropdown-toggle mt-2" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Seleccione servicio
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Rayos X </a></li>
+            <li><a class="dropdown-item" href="">Consulta Medica</a></li>
+            <li><a class="dropdown-item" href="#">Peluqueria</a></li>
+            <li><a class="dropdown-item" href="#">Cirugia</a></li>
+            <li><a class="dropdown-item" href="#">Micro Chip</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="mt-5">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{% static 'icon/perfil.png' %}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Doctor@:</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+<table class="table row">
+    <h3>Horas Disponibles</h3>
+    <thead>
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Servicio</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">xx/xx/xx</th>
+        <td>xx:xx</td>
+        <td>Consulta medica</td>
+        <td><button class="btn btn-warning">Reservar</button></td>
+        
+      </tr>
+      <tr>
+        <th scope="row">xx/xx/xx</th>
+        <td>xx:xx</td>
+        <td>Consulta medica</td>
+        <td><button class="btn btn-warning">Reservar</button></td>
+        
+      </tr>
+      <tr>
+        <th scope="row">xx/xx/xx</th>
+        <td>xx:xx</td>
+        <td>Consulta medica</td>
+        <td><button class="btn btn-warning">Reservar</button></td>
+        
+      </tr>
+      <tr>
+        <th scope="row">xx/xx/xx</th>
+        <td>xx:xx</td>
+        <td>Consulta medica</td>
+        <td><button class="btn btn-warning">Reservar</button></td>
+        
+      </tr>
+      <tr>
+        <th scope="row">xx/xx/xx</th>
+        <td>xx:xx</td>
+        <td>Consulta medica</td>
+        <td><button class="btn btn-warning">Reservar</button></td>
+        
+      </tr>
+      
+     
+      
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

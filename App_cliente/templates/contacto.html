@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Contacto {% endblock %}
+
+{% block contenido %}
+<!-- Contacto 1 
+<section class="mt-4">
+<div class="container cont  ">
+  <form action="action_page.php">
+
+    <label for="fname">Nombre</label>
+    <input type="text" id="fname" name="firstname" placeholder="tu nombre">
+
+    <label for="lname">Apellido</label>
+    <input type="text" id="lname" name="lastname" placeholder="tu apellido">
+    
+    <label for="email">Correo</label>
+    <input type="text" id="email" name="email" placeholder="tu correo @">
+
+    <label for="comuna">Comuna</label>
+    <select id="comuna" name="comuna">
+      <option value="comuna">comuna</option>
+      
+    </select>
+
+    <label for="subject">Mensaje</label>
+    <textarea id="subject" name="subject" placeholder="Escribe tu Mensaje" style="height:200px"></textarea>
+
+    <input type="submit" value="Enviar">
+
+  </form>
+</div>
+
+</section>-->
+
+
+
+
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container mt-4 ">
+  <h2 class="text-center">Contacto</h2>
+  
+
+  <div class="row">
+    <div class="col-md-3">
+      <p>Puedes contactarnos:</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>Santiago, CL</p>
+      <p><span class="glyphicon glyphicon-phone"></span>WathsApp: +569 948824634</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: cr.savaria@duocuc.cl</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: ge.caceres@duocuc.cl</p>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Nombre" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Correo" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comentario" rows="5"></textarea>
+      <br>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <button class="btn btn-success" type="submit">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  
+
+  
+</div>
+
+
+
+<div class=" mt-4 mb-4">
+  <h3>Direccion:</h3>
+  <p>Santiago Centro #1111</p>
+  <img src="{% static 'app/img/maps.png' %}" class="d-block w-100  carro" alt="carrusel1">
+</div>
+{% endblock %}
