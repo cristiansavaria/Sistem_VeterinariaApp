@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Insumos {% endblock %}
+
+{% block content %}
+
+
+<h1>
+    Insumos
+</h1>
+
+
+
+<div class="container mt-3">
+    <h2>Lista de Insumos en Stock</h2>
+                
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John</td>
+          <td>Doe</td>
+          <td>john@example.com</td>
+        </tr>
+        <tr>
+          <td>Mary</td>
+          <td>Moe</td>
+          <td>mary@example.com</td>
+        </tr>
+        <tr>
+          <td>July</td>
+          <td>Dooley</td>
+          <td>july@example.com</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<hr>
+<div class="d-grid gap-2 d-md-block">
+    <button class="btn btn-primary d-grid gap-2 col-2 mx-auto" type="button">Agregar Productos +</button>
+    
+  </div>
+{% endblock %}
