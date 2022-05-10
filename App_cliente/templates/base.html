@@ -1,359 +1,434 @@
 {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/seleccion.css' %}" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'icon/patita.png' %}"
+    />
 
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-  <link rel="stylesheet" href="{% static 'css/seleccion.css' %}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icon/patita.png' %}">
+    <title>{% block title %} Inicio {% endblock %}</title>
+  </head>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <body class="body_page">
+    <header class="verde">
+      <nav class="navbar navbar-expand-lg p-4"></nav>
+    </header>
 
-  <title>{% block title %} Inicio {% endblock %}</title>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
+      <div class="container">
+        <img
+          src="{% static 'icon/patita.png' %}"
+          width="30"
+          height="24"
+          class="d-inline-block align-text-top"
+        />
+        <a class="navbar-brand" href="#"
+          >Clinica Veterinaria <span id="nav_huell">Huellitas</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="collapsibleNavbar"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'inicio' %}"
+                ><span id="nav_inicio">Inicio</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'servicio' %}">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'reserva_hora' %}"
+                >Reserva de Horas</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'quienes_somos' %}"
+                >Quienes Somos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+            </li>
+          </ul>
+          <div>
+            <!-- Iniciar Sesion -->
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Iniciar Sesion
+            </button>
 
-</head>
+            <!-- Iniciar Sesion -->
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Inicio de Sesion
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/action_page.php">
+                      <div class="mb-3 mt-3">
+                        <label for="text" class="form-label">Usuario:</label>
+                        <input
+                          type="etext"
+                          class="form-control"
+                          id="email"
+                          placeholder="Ingrese Usuario"
+                          name="Usuario"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="pwd" class="form-label">Contrasena:</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="pwd"
+                          placeholder="Ingrese Contrasena"
+                          name="contrasena"
+                        />
+                      </div>
+                      <div class="form-check mb-3">
+                        <label class="form-check-label">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            name="remember"
+                          />
+                          Recordarme
+                        </label>
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        Ingresar
+                      </button>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">
+                      Olvido su Contrasena?
+                    </button>
+                    <button type="button" class="btn b">Registrarse</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-<body class="body_page">
+            <!--0------------------------------------------------------------------------------------- ------------------------------------>
 
-  <header class="verde">
+            <!-- Registro -->
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal2"
+            >
+              Registro
+            </button>
 
-    <nav class="navbar navbar-expand-lg  p-4  ">
-
-
-
+            <!-- Registro -->
+            <div
+              class="modal fade"
+              id="exampleModal2"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Registro Cliente
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/action_page.php">
+                      <div class="mb-3 mt-3">
+                        <label for="text" class="form-label">Usuario:</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="text"
+                          placeholder="Ingrese Usuario"
+                          name="usuario"
+                        />
+                      </div>
+                      <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Correo:</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          placeholder="Ingrese Correo"
+                          name="email"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="pwd" class="form-label">Contrasena:</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="pwd"
+                          placeholder="Ingrese Contrasena"
+                          name="contrasena"
+                        />
+                      </div>
+                      <div class="form-check mb-3">
+                        <label class="form-check-label">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            name="remember"
+                          />
+                          Recordarme
+                        </label>
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        Registrarse
+                      </button>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">
+                      Olvido su Contrasena?
+                    </button>
+                    <button type="button" class="btn">Iniciar Sesion</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
 
-  </header>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light  p-4">
+    <!-- Seccion Principal ------------------------------>
     <div class="container">
-      <img src="{% static 'icon/patita.png' %}" width="30" height="24" class="d-inline-block align-text-top">
-      <a class=" navbar-brand" href="#">Clinica Veterinaria <span id="nav_huell">Huellitas</span> </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+      {% block contenido %}
 
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'inicio' %}"><span id="nav_inicio">Inicio</span> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'servicio' %}">Servicios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'reserva_hora' %}">Reserva de Horas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="{% url 'quienes_somos' %}">Quienes Somos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="{% url 'contacto' %}">Contacto</a>
-          </li>
-        </ul>
-        <div>
-
-
-          <!-- Iniciar Sesion -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Iniciar Sesion
-          </button>
-
-          <!-- Iniciar Sesion -->
-          <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Inicio de Sesion</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body ">
-
-
-
-                  <form action="/action_page.php">
-                    <div class="mb-3 mt-3">
-                      <label for="text" class="form-label">Usuario:</label>
-                      <input type="etext" class="form-control" id="email" placeholder="Ingrese Usuario" name="Usuario">
-                    </div>
-                    <div class="mb-3">
-                      <label for="pwd" class="form-label">Contrasena:</label>
-                      <input type="password" class="form-control" id="pwd" placeholder="Ingrese Contrasena"
-                        name="contrasena">
-                    </div>
-                    <div class="form-check mb-3">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="remember"> Recordarme
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
-                  </form>
-
-
-
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn " data-bs-dismiss="modal">Olvido su Contrasena?</button>
-                  <button type="button" class="btn b">Registrarse</button>
-                </div>
-              </div>
+      <div
+        id="carouselExampleFade"
+        class="carousel slide carousel-fade"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item corro active">
+            <img
+              src="{% static 'img/Recurso_1.png' %}"
+              class="d-block w-100 carro"
+              alt="carrusel1"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </div>
           </div>
-
-          <!--0------------------------------------------------------------------------------------- ------------------------------------>
-
-          <!-- Registro -->
-          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-            Registro
-          </button>
-
-          <!-- Registro -->
-          <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Registro Cliente</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-
-
-                  <form action="/action_page.php">
-                    <div class="mb-3 mt-3">
-                      <label for="text" class="form-label">Usuario:</label>
-                      <input type="text" class="form-control" id="text" placeholder="Ingrese Usuario" name="usuario">
-                    </div>
-                    <div class="mb-3 mt-3">
-                      <label for="email" class="form-label">Correo:</label>
-                      <input type="email" class="form-control" id="email" placeholder="Ingrese Correo" name="email">
-                    </div>
-                    <div class="mb-3">
-                      <label for="pwd" class="form-label">Contrasena:</label>
-                      <input type="password" class="form-control" id="pwd" placeholder="Ingrese Contrasena"
-                        name="contrasena">
-                    </div>
-                    <div class="form-check mb-3">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="remember"> Recordarme
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
-                  </form>
-
-
-
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn " data-bs-dismiss="modal">Olvido su Contrasena?</button>
-                  <button type="button" class="btn ">Iniciar Sesion</button>
-                </div>
-              </div>
+          <div class="carousel-item corro">
+            <img
+              src="{% static 'img/Recurso_2.png' %}"
+              class="d-block w-100 carro"
+              alt="carrusel2"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </div>
           </div>
-
-
-
-
-
+          <div class="carousel-item corro">
+            <img
+              src="{% static 'img/Recurso_3.png' %}"
+              class="d-block w-100 carro"
+              alt="carrusel3"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+          </div>
         </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
       </div>
 
-    </div>
+      <hr />
 
-  </nav>
+      <br />
 
-  <!-- Seccion Principal ------------------------------>
-  <div class="container">
-
-
-    {% block contenido %}
-
-
-
-
-
-
-
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item corro active">
-          <img src="{% static 'img/Recurso_1.png' %}" class="d-block w-100  carro" alt="carrusel1">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div>
-        </div>
-        <div class="carousel-item corro ">
-          <img src="{% static 'img/Recurso_2.png' %}" class="d-block w-100   carro" alt="carrusel2">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div>
-        </div>
-        <div class="carousel-item corro ">
-
-          <img src="{% static 'img/Recurso_3.png' %}" class="d-block w-100 carro" alt="carrusel3">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div>
-
-        </div>
+      <div class="text-center">
+        <h1>Mision</h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque minima
+          iusto distinctio dicta delectus ad possimus eligendi vitae a magnam
+          harum expedita eaque debitis, provident in corrupti. Possimus,
+          molestiae natus.
+        </p>
+        <br />
+        <hr />
+        <h1>Vision</h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque minima
+          iusto distinctio dicta delectus ad possimus eligendi vitae a magnam
+          harum expedita eaque debitis, provident in corrupti. Possimus,
+          molestiae natus.
+        </p>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-      </button>
-    </div>
+      <hr />
 
-    <hr>
-
-   
- 
-
-    <br>
-
-    <div class="text-center">
-      <h1>Mision</h1>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque minima iusto distinctio dicta delectus ad
-        possimus eligendi vitae a magnam harum expedita eaque debitis, provident in corrupti. Possimus, molestiae natus.
-      </p>
-      <br>
-      <hr>
-      <h1>Vision</h1>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque minima iusto distinctio dicta delectus ad
-        possimus eligendi vitae a magnam harum expedita eaque debitis, provident in corrupti. Possimus, molestiae natus.
-      </p>
-
-    </div>
-    <hr>
-
-    <section>
-      <div class="text-center mb-5">
-        <h2>
-          Atencion de Urgencia las 24Hrs!
-        </h2>
-      </div>
-    </section>
-    <script src="{% static 'js/js.js' %}"></script>
-    {% endblock %}
-
-
-  </div>
-  <!----------------------------------------------------------------------->
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- Footer ------------------------------>
-  <footer class="text-center text-lg-start bg-light text-muted">
-    <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-
-    </section>
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
-    <section class="">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fas fa-gem me-3"></i>Organizacion
-            </h6>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, recusandae iure ex quaerat et
-              veritatis?
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Contacto
-            </h6>
-
-            <p>
-              <i class="fas fa-envelope me-3"></i>
-              Ge.caceres@duocuc.cl
-            </p>
-            <p>
-              <i class="fas fa-envelope me-3"></i>
-              Cr.savaria@duocuc.cl
-            </p>
-            <p><i class="fas fa-phone me-3"></i> +569 9 4882 4634</p>
-            <p><i class="fas fa-print me-3"></i> +569 9 4882 4634</p>
-          </div>
-          <!-- Grid column -->
+      <section>
+        <div class="text-center mb-5">
+          <h2>Atencion de Urgencia las 24Hrs!</h2>
         </div>
-        <!-- Grid row -->
-      </div>
-    </section>
-    <!-- Section: Links  -->
-
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2021 Copyright:
-      <a class="text-reset fw-bold" href="https://www.duoc.cl/">DuocUc Padre Alonso de Ovalle</a>
+      </section>
+      <script src="{% static 'js/js.js' %}"></script>
+      {% endblock %}
     </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
+    <!----------------------------------------------------------------------->
 
+    <!-- Footer ------------------------------>
+    <footer class="text-center text-lg-start bg-light text-muted">
+      <!-- Section: Social media -->
+      <section
+        class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+      ></section>
+      <!-- Section: Social media -->
 
+      <!-- Section: Links  -->
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fas fa-gem me-3"></i>Organizacion
+              </h6>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Perspiciatis, recusandae iure ex quaerat et veritatis?
+              </p>
+            </div>
+            <!-- Grid column -->
 
+            <!-- Grid column -->
 
+            <!-- Grid column -->
 
-  <!-- Optional JavaScript; choose one of the two! -->
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
+            <!-- Grid column -->
 
+            <!-- Grid column -->
 
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
+
+              <p>
+                <i class="fas fa-envelope me-3"></i>
+                Ge.caceres@duocuc.cl
+              </p>
+              <p>
+                <i class="fas fa-envelope me-3"></i>
+                Cr.savaria@duocuc.cl
+              </p>
+              <p><i class="fas fa-phone me-3"></i> +569 9 4882 4634</p>
+              <p><i class="fas fa-print me-3"></i> +569 9 4882 4634</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <!-- Section: Links  -->
+
+      <!-- Copyright -->
+      <div
+        class="text-center p-4"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" href="https://www.duoc.cl/"
+          >DuocUc Padre Alonso de Ovalle</a
+        >
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
    -->
-  
-  
-
-</body>
-
+  </body>
 </html>
