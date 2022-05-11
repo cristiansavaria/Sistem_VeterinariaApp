@@ -77,13 +77,8 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
             </li>
+            
           </ul>
-
-          <!-- Iniciar Sesion -->
-
-          <!-- Iniciar Sesion -->
-
-          <!-- Registro -->
           <div>
             {% if user.is_authenticated %}
             <a href="{% url 'logout' %}"
@@ -91,23 +86,29 @@
                 Cerrar Sesion
               </button></a
             >
-
-            
-
             {% else %}
             <a href="{% url 'login' %}"
               ><button type="button" class="btn btn-primary">
                 Iniciar Sesion
               </button></a
             >
-            {% endif %}
             <a href="{% url 'registro' %}"
               ><button type="button" class="btn btn-secondary">
                 Registro
               </button></a
             >
 
+            
+            {% endif %}
+            
+          
+
+          
+
             <!-- Registro -->
+
+            
+            
           </div>
         </div>
       </div>
