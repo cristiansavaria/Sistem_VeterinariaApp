@@ -25,3 +25,9 @@ def contacto(request):
 
 def quienes_somos(request):
     return render(request, 'quienes_somos.html')
+
+
+def login(request):
+    return render(request, 'login.html')
+def registro(request):
+    return render(request, 'registro.html')
