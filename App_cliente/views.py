@@ -29,5 +29,7 @@ def quienes_somos(request):
 
 def login(request):
     return render(request, 'login.html')
+def historial(request):
+    return render(request, 'historial.html')
 def registro(request):
     return render(request, 'registro.html')

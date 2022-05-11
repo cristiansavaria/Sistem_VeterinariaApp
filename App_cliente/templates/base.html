@@ -119,6 +119,11 @@
       
       {% if user.is_authenticated %}
       <h6>Bienvenido/a <span class="username">{{ user.username|capfirst }}</span></h6>
+      <a  href="{% url 'historial' %}"
+              ><button type="button" class="btn btn-warning mb-3">
+                Ir a Historial Clinico
+              </button></a
+            >
       {% endif %}
       {% block contenido %}
 
