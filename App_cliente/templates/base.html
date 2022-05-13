@@ -119,7 +119,7 @@
     <div class="container">
       
       {% if user.is_authenticated %}
-      <h6>Bienvenido/a <span class="username">{{ user.username|capfirst }}</span></h6>
+      <h6>Bienvenido/a <span class="username"> {{ user.username|capfirst }}</span></h6>
       <a  href="{% url 'historial' %}"
               ><button type="button" class="btn btn-warning mb-3">
                 Ir a Historial Clinico
@@ -180,7 +180,7 @@
       <br />
     
       <section>
-        <div class="p-3 mb-1 bg-warning text-dark col-12 text-center "> <h4> Especialidades </h4> </div>
+        <div class="sombra  mb-4  text-dark col-12 text-center "> <h3> Especialidades </h3> </div>
         
         <div >
 
@@ -221,7 +221,7 @@
     <hr />
 
       <section>
-        <div class="p-3 mb-2 bg-warning text-dark text-center "> 
+        <div class="sombra2 mb-4 text-dark text-center "> 
           <h2>Atencion de Urgencia las 24Hrs!</h2>
         </div>
       </section>

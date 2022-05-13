@@ -20,6 +20,7 @@
     padding: 10px;
     padding: 8px 30px;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 }
 
@@ -137,9 +138,24 @@ input[type=text], select, textarea {
 
 
 
+.sombra{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 8px;
+    padding: 0;
+    height: 80px;
+    
+    background-color: rgb(67, 158, 161);
+}
+.sombra2{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 8px;
+    padding: 0;
+    height: 80px;
+    
+    background-color: rgba(248, 129, 17, 0.836)
+}
 
-  
 
-
-
-  
+.carro{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
