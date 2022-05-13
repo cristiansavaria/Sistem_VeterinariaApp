@@ -2,97 +2,193 @@
 {% load static %}
 {% block title %} Servicio {% endblock %}
 
+
 {% block contenido %}
 
- <!-- Seccion Tipos de Servicio Inicio ------------------------------>
- <section>
-    <h2 class="text-center mt-4">Nuestros Servicios</h2>
+<!doctype html>
+<html lang="en">
+  
+  <body>
+    <!-- Seccion Tipos de Servicio Inicio ------------------------------>
+      <section>
+        <h2 class="text-center mt-4">Nuestros Servicios</h2>
 
-    <h4 class="text-center">Mas de 10 años de experiencia en distintas areas</h4>
+        <h4 class="text-center">Mas de 10 años de experiencia en distintas areas</h4>
 
-    <div class="responsive mt-4 img-thumbnail">
-      <div class="gallery">
-        <a target="_blank">
-          <img src="{% static 'img/consulta.png' %}" alt="Cinque Terre" width="200" height="200">
-        </a>
-        <h4 class="text-center mt-3">Consultas Medicas</h4>
-        <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, similique?</div>
-      </div>
-    </div>
-
-
-    <div class="responsive mt-4 img-thumbnail">
-      <div class="gallery">
-        <a target="_blank">
-          <img src="{% static 'img/cirugia.png' %}" alt="Forest" width="200" height="200">
-        </a>
-        <h4 class="text-center mt-3">Cirugias</h4>
-        <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, similique?</div>
-      </div>
-    </div>
-
-    <div class="responsive mt-4 img-thumbnail">
-      <div class="gallery">
-        <a target="_blank">
-          <img src="{% static 'img/peluqueria.png' %}" alt="Northern Lights" width="200" height="200">
-        </a>
-        <h4 class="text-center mt-3">Peluqueria</h4>
-        <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, similique?</div>
-      </div>
-    </div>
-
-    <div class="responsive mt-4 img-thumbnail">
-      <div class="gallery">
-        <a target="_blank">
-          <img src="{% static 'img/rayos.png' %}" alt="Mountains" width="200" height="200">
-        </a>
-        <h4 class="text-center mt-3">Rayos X</h4>
-        <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, similique?</div>
-      </div>
-    </div>
-    <div class="responsive mt-4 img-thumbnail">
-      <div class="gallery">
-        <a target="_blank">
-          <img src="{% static 'img/consulta.png' %}" alt="Cinque Terre" width="200" height="200">
-        </a>
-        <h4 class="text-center mt-3">Hospitalizacion</h4>
-        <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, similique?</div>
-      </div>
-    </div>
+        <div class="responsive mt-4 img-thumbnail">
+          <div class="gallery">
+            <a target="_blank" >
+              <img class="amarillo" src="{% static 'img/revision-medica.png' %}" alt="Cinque Terre" width="80" height="80" >
+            </a>
+            <h4 class="text-center mt-5">Consulta general</h4>           
+            
+          </div>
+        </div>
 
 
-    <div class="responsive mt-4 img-thumbnail">
-      <div class="gallery">
-        <a target="_blank">
-          <img src="{% static 'img/cirugia.png' %}" alt="Forest" width="200" height="200">
-        </a>
-        <h4 class="text-center mt-3">Micro Chips</h4>
-        <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, similique?</div>
-      </div>
-    </div>
+        <div class="responsive mt-4 img-thumbnail">
+          <div class="gallery">
+            <a target="_blank">
+              <img src="{% static 'img/esterilizacion.png' %}" alt="Forest" width="80" height="80">
+            </a>
+            <h4 class="text-center mt-3">Esterilización y castraciones</h4>
+          </div>
+        </div>
 
-    <div class="responsive mt-4 img-thumbnail">
-      <div class="gallery">
-        <a target="_blank">
-          <img src="{% static 'img/peluqueria.png' %}" alt="Northern Lights" width="200" height="200">
-        </a>
-        <h4 class="text-center mt-3">Rehabilitacion</h4>
-        <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, similique?</div>
-      </div>
-    </div>
+        <div class="responsive mt-4 img-thumbnail">
+          <div class="gallery">
+            <a target="_blank">
+              <img src="{% static 'img/chip.png' %}" alt="Northern Lights" width="80" height="80">
+            </a>
+            <h4 class="text-center mt-5">Implantación del chip</h4>
+          </div>
+        </div>
 
-    <div class="responsive mt-4 img-thumbnail">
-      <div class="gallery">
-        <a target="_blank">
-          <img src="{% static 'img/rayos.png' %}" alt="Mountains" width="200" height="200">
-        </a>
-        <h4 class="text-center mt-3">Toma de Examenes</h4>
-        <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, similique?</div>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-  </section>
+        <div class="responsive mt-4 img-thumbnail">
+          <div class="gallery">
+            <a target="_blank">
+              <img src="{% static 'img/examen.png' %}" alt="Mountains" width="80" height="80">
+            </a>
+            <h4 class="text-center mt-4">Exámenes de Laboratorio</h4>
+          </div>
+        </div>
+        <div class="responsive mt-5 img-thumbnail">
+          <div class="gallery">
+            <a target="_blank">
+              <img src="{% static 'img/eco.png' %}" alt="Cinque Terre" width="80" height="80">
+            </a>
+            <h4 class="text-center mt-4">Radiografías y ecografias</h4>
+          </div>
+        </div>
 
 
+        <div class="responsive mt-5 img-thumbnail">
+          <div class="gallery">
+            <a target="_blank">
+              <img src="{% static 'img/destartrajes.png' %}" alt="Forest" width="80" height="80">
+            </a>
+            <h4 class="text-center mt-5">Destartrajes</h4>
+          </div>
+        </div>
+
+        <div class="responsive mt-5 img-thumbnail">
+          <div class="gallery">
+            <a target="_blank">
+              <img src="{% static 'img/piel.png' %}" alt="Northern Lights" width="80" height="80">
+            </a>
+            <h4 class="text-center mt-5">Examen de piel</h4>
+          </div>
+        </div>
+
+        <div class="responsive mt-5 img-thumbnail">
+          <div class="gallery">
+            <a target="_blank">
+              <img src="{% static 'img/peluq.png' %}" alt="Mountains" width="80" height="80">
+            </a>
+            <h4 class="text-center mt-5">Peluqueria</h4>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </section>
+
+    </br>
+  </br>
+      <hr />
+      <section>
+        <div class="p-3 mb-1 bg-warning text-dark col-12 text-center "> <h4> Consulta General </h4> </div>
+        
+        <div >
+          <ul>
+            <li>
+              Vacunaciones y desparasitaciones
+            </li>
+            <li>
+              Implantación de Chip en Mascotas
+            </li>
+          </ul>
+        </div>
+      </section>
+    </br>
+  </br>
+      <hr />
+      <section>
+        <div class="p-3 mb-1 bg-warning text-dark col-12 text-center "> <h4> Cirugía </h4> </div>
+        
+        <div >
+
+          <ul>
+            <li>
+              Anestesia de alta complejidad
+            </li>
+            <li>
+              Esterilizaciones
+            </li>
+            <li>
+              Cesáreas
+            </li>
+            <li>
+              Destartraje
+            </li>
+            <li>
+              Cirugía de tejidos blandos
+            </li>
+            <li>
+              Cirugía ortopédica
+            </li>
+          </ul>
+        </div>
+
+        
+    </br>
+  </br>
+      <hr />
+      <section>
+        <div class="p-3 mb-1 bg-warning text-dark col-12 text-center "> <h4> Imagenología </h4> </div>
+        
+        <div >
+          <ul>
+            <li>
+              Radiografía y Ecografía ( Agendamiento vía telefónica)
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    </br>
+  </br>
+      <hr />
+      <section>
+        <div class="p-3 mb-1 bg-warning text-dark col-12 text-center "> <h4> Exámenes de rutina </h4> </div>
+        
+        <div >
+
+          <ul>
+            <li>
+              Exámenes de sangre
+            </li>
+            <li>
+              Exámenes de orina
+            </li>
+            <li>
+              Exámenes fecales
+            </li>
+            <li>
+              Biopsias
+            </li>
+            <li>
+              Citologías
+            </li>
+            <li>
+              Radiografía y Ecografía ( Agendamiento vía telefónica)
+            </li>
+          </ul>
+        </div>
+
+      </section>
+      <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
+
+  </body>
+</html>
+ 
 
 {% endblock %}
