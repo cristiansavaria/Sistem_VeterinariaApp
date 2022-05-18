@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import ContactoForm
-
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 def base(request):
     return render(request, 'base.html')
@@ -8,6 +9,7 @@ def servicio(request):
     return render(request, 'servicios.html')
 def reserva_hora(request):
     return render(request, 'reserva_hora.html')
+
 def contacto(request):
     data = {
         'form' : ContactoForm()
@@ -17,6 +19,12 @@ def contacto(request):
         formulario = ContactoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            subject=request.POST["nombre"]
+            message=request.POST["mensaje"] + " " + request.POST["correo"] + " " + request.POST["tipo_consulta"]
+            email_from=settings.EMAIL_HOST_USER
+            recipient_list=["clinica.huellitas2022@gmail.com"]
+            send_mail(subject, message, email_from, recipient_list )
+
             data["mensaje"] = "contacto guardado"
         else:
             data["form"] = formulario
