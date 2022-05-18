@@ -2,6 +2,7 @@ from django import views
 from django.urls import path
 from .views import base, historial, login, registro, servicio, reserva_hora, contacto, quienes_somos
 
+
 urlpatterns = [
     path('', base, name='inicio'),
     path('servicio/', servicio, name='servicio'),

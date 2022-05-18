@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import ContactoForm
+from .forms import ContactoForm, registroUsuario
 from django.core.mail import send_mail
 from django.conf import settings
 # Create your views here.
@@ -34,10 +34,28 @@ def contacto(request):
 def quienes_somos(request):
     return render(request, 'quienes_somos.html')
 
+def registro(request):
+    data = {
+        'form': registroUsuario()    
+    }
+    if request.method == 'POST':
+        formulario = registroUsuario(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            
+        data["form"] = formulario
+        
+    return render(request, 'registration/registro.html', data)
+   
+    
 
 def login(request):
-    return render(request, 'login.html')
+    return render(request, 'registration/login.html')
+
+
 def historial(request):
     return render(request, 'historial.html')
-def registro(request):
-    return render(request, 'registro.html')
+
+
+
+
