@@ -30,6 +30,8 @@ class Comuna(models.Model):
     id_com = models.AutoField(primary_key=True)
     nom_com = models.CharField(max_length=45)
 
+    def __str__(self):
+        return self.nom_com
     class Meta:
         managed = False
         db_table = 'comuna'
