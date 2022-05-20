@@ -69,6 +69,9 @@ class Especialidad(models.Model):
     id_esp = models.AutoField(db_column='id_Esp', primary_key=True)  # Field name made lowercase.
     nom_espe = models.CharField(max_length=45)
 
+    def __str__(self):
+        return self.nom_espe
+
     class Meta:
         managed = False
         db_table = 'especialidad'
@@ -78,6 +81,8 @@ class Especie(models.Model):
     id_esp = models.AutoField(db_column='id_Esp', primary_key=True)  # Field name made lowercase.
     nom_esp = models.CharField(max_length=45)
 
+    def __str__(self):
+        return self.nom_esp
     class Meta:
         managed = False
         db_table = 'especie'
@@ -96,6 +101,7 @@ class Insumo(models.Model):
     id_insumo = models.AutoField(db_column='id_Insumo', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(max_length=45)
     inventario = models.IntegerField()
+
     def __str__(self):
         return self.nombre
     
@@ -149,6 +155,9 @@ class Procedimiento(models.Model):
     id_proc = models.AutoField(db_column='id_Proc', primary_key=True)  # Field name made lowercase.
     nom_pro = models.CharField(max_length=45)
 
+    def __str__(self):
+        return self.nom_pro
+
     class Meta:
         managed = False
         db_table = 'procedimiento'
@@ -194,6 +203,9 @@ class TipPago(models.Model):
 class TipoEmpleado(models.Model):
     idtip_emp = models.AutoField(db_column='idTip_Emp', primary_key=True)  # Field name made lowercase.
     nom_tp_em = models.CharField(max_length=45)
+
+    def __str__(self):
+        return self.nom_tp_em
 
     class Meta:
         managed = False
