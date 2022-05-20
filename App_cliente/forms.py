@@ -11,6 +11,6 @@ class ContactoForm(forms.ModelForm):
 
 
 
-class registroUsuario(UserCreationForm):
+class RegistroUsuario(UserCreationForm):
     pass
 

@@ -11,16 +11,54 @@
 
 
 
-<div class="container mt-3">
+<div class="container mt-3 ">
     <h2>Lista de Insumos en Stock</h2>
-                
+         <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  + Agregar Insumo
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Insumos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="insumo row g-3" method="POST">
+          {% csrf_token %}
+
+          
+          <div class="col-12">
+            <label for="nombre" class="form-label">Descripcion</label>
+            <input type="text" name="nombre" class="form-control" id="inputAddress" placeholder="ej: insumo(caja), insumo(ampollas)">
+          </div>
+          <div class="col-12">
+            <label for="inventario" class="form-label">Cantidad</label>
+            <input type="text" name="inventario" class="form-control" id="inputAddress2" placeholder="ej: 20">
+          </div>
+          
+         <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Almacenar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        
+      </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>           
     <table class="table table-bordered">
       <thead>
         <tr>
           <th>Codigo</th>
           <th>Descripción</th>
           <th>Cantidad</th>
-          accion
+          <th class="text-center">Accion</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -29,8 +67,10 @@
           <td>{{ i.id_insumo }}</td>
           <td>{{ i.nombre }}</td>
           <td class="text-center">{{ i.inventario }}</td>
-          <td><button type="button" class="btn btn-warning">Editar</button></td>
-          <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+          <td><button type="button" class="btn btn-warning m-1">Editar
+            <button type="button" class="btn btn-danger">Eliminar</button>
+          </button></td>
+          
         </tr>
         {% endfor %}
       </tbody>
@@ -40,69 +80,6 @@
 <hr>
 <div class="container">
     
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Agregar Insumo
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form class="row g-3">
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4">
-          </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Password</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="col-12">
-            <label for="inputAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-          </div>
-          <div class="col-12">
-            <label for="inputAddress2" class="form-label">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-          </div>
-          <div class="col-md-6">
-            <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <div class="col-md-4">
-            <label for="inputState" class="form-label">State</label>
-            <select id="inputState" class="form-select">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="col-md-2">
-            <label for="inputZip" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-          <div class="col-12">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Check me out
-              </label>
-            </div>
-          </div>
-         
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
   </div>
 {% endblock %}
