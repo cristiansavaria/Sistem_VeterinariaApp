@@ -17,27 +17,27 @@
     <table class="table table-bordered">
       <thead>
         <tr>
+          <th>ID Paciente</th>
           <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Correo</th>
+          <th>Fecha nacimiento</th>
+          <th>Raza</th>
+          <th>Rut Cliente</th>
+          <th>Especie</th>
         </tr>
       </thead>
       <tbody>
+        {% for p in pacientes %}
         <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
+          <td>{{ p.id_pac }}</td>
+          <td>{{ p.nom_pac }}</td>
+          <td class="text-center">{{ p.fec_nac }}</td>
+          <td class="text-center">{{ p.raza }}</td>
+          <td class="text-center">{{ p.cliente_id_cli }}</td>
+          <td class="text-center">{{ p.especie_id_esp }}</td>
+          <td><button type="button" class="btn btn-warning">Editar</button></td>
+          <td><button type="button" class="btn btn-danger">Eliminar</button></td>
         </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@example.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

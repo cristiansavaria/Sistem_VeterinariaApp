@@ -17,27 +17,27 @@
     <table class="table table-bordered">
       <thead>
         <tr>
+          <th>Rut</th>
           <th>Nombre</th>
-          <th>Apellido</th>
+          <th>Telefono</th>
           <th>Correo</th>
+          <th>Dirección</th>
+          <th>Comuna</th>
         </tr>
       </thead>
       <tbody>
+        {% for c in cliente %}
         <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
+          <td>{{ c.id_cli }}</td>
+          <td>{{ c.nom_cli }} {{ c.ap_cli }}</td>
+          <td class="text-center">{{ c.telefono }}</td>
+          <td class="text-center">{{ c.email }}</td>
+          <td class="text-center">{{ c.direccion }}</td>
+          <td class="text-center">{{ c.comuna_id_com }}</td>
+          <td><button type="button" class="btn btn-warning">Editar</button></td>
+          <td><button type="button" class="btn btn-danger">Eliminar</button></td>
         </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@example.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
