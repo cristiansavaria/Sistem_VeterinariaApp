@@ -8,6 +8,8 @@ def clientes(request):
     return render(request, 'clientes.html')
 def pacientes(request):
     return render(request, 'pacientes.html')
+def medico(request):
+    return render(request, 'medico.html')
 def insumos(request):
     insumos = Insumo.objects.all()
     data = {
