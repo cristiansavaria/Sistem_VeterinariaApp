@@ -1,5 +1,6 @@
+from sqlite3 import DatabaseError
 from django.shortcuts import render
-from .models import Insumo, Cliente, Paciente
+from .models import Insumo, Cliente, Paciente, Empleado, TipoEmpleado
 from .forms import InsumoForm
 # Create your views here.
 def index(request):
@@ -18,8 +19,15 @@ def pacientes(request):
     }
 
     return render(request, 'pacientes.html', data)
+
 def medico(request):
-    return render(request, 'medico.html')
+
+    medico = Empleado.objects.filter(tipo_empleado_idtip_emp= 1)
+    data = {
+        'medico' : medico,
+    }
+       
+    return render(request, 'medico.html', data)
 
 
 def insumos(request):

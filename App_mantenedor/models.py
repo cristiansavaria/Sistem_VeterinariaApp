@@ -21,6 +21,9 @@ class Cliente(models.Model):
     comuna_id_com = models.ForeignKey('Comuna', models.DO_NOTHING, db_column='Comuna_id_com')  # Field name made lowercase.
     genero_id_gen = models.ForeignKey('Genero', models.DO_NOTHING, db_column='Genero_id_Gen')  # Field name made lowercase.
 
+    rut = str(id_cli)
+    
+   
     class Meta:
         managed = False
         db_table = 'cliente'
@@ -119,6 +122,7 @@ class Paciente(models.Model):
     cliente_id_cli = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='Cliente_id_cli')  # Field name made lowercase.
     especie_id_esp = models.ForeignKey(Especie, models.DO_NOTHING, db_column='Especie_id_Esp')  # Field name made lowercase.
 
+    
     class Meta:
         managed = False
         db_table = 'paciente'

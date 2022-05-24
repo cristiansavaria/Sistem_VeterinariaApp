@@ -17,27 +17,23 @@
     <table class="table table-bordered">
       <thead>
         <tr>
+          <th>Especialidad</th>
           <th>Nombre</th>
-          <th>Apellido</th>
           <th>Correo</th>
         </tr>
       </thead>
       <tbody>
+        {% for m in medico %}
         <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
+          <td>{{ m.tipo_empleado_idtip_emp }}</td>
+          <td>{{ m.nom_emp}} {{ m.ap_emp }}</td>
+          <td>{{ m.email }}</td>
+          <td><button type="button" class="btn btn-warning m-1">Editar
+            <button type="button" class="btn btn-danger">Eliminar</button>
+          </button></td>
+          
         </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@example.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
