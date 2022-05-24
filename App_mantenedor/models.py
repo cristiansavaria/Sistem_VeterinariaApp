@@ -87,6 +87,10 @@ class Empleado(models.Model):
     comuna_id_com = models.ForeignKey(Comuna, models.DO_NOTHING, db_column='Comuna_id_com')  # Field name made lowercase.
     tipo_empleado_idtip_emp = models.ForeignKey('TipoEmpleado', models.DO_NOTHING, db_column='tipo_empleado_idTip_Emp')  # Field name made lowercase.
 
+    
+    def __str__(self):
+        return self.rut_emp
+    
     class Meta:
         managed = False
         db_table = 'empleado'
@@ -234,6 +238,9 @@ class TipoEmpleado(models.Model):
     idtip_emp = models.AutoField(db_column='idTip_Emp', primary_key=True)  # Field name made lowercase.
     nom_tp_em = models.CharField(max_length=45)
 
+    def __str__(self):
+        return self.nom_tp_em
+    
     class Meta:
         managed = False
         db_table = 'tipo_empleado'

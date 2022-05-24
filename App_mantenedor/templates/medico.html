@@ -18,6 +18,7 @@
       <thead>
         <tr>
           <th>Especialidad</th>
+          <th>Rut</th>
           <th>Nombre</th>
           <th>Correo</th>
         </tr>
@@ -26,6 +27,7 @@
         {% for m in medico %}
         <tr>
           <td>{{ m.tipo_empleado_idtip_emp }}</td>
+          <td>{{ m.rut_emp}}</td>
           <td>{{ m.nom_emp}} {{ m.ap_emp }}</td>
           <td>{{ m.email }}</td>
           <td><button type="button" class="btn btn-warning m-1">Editar

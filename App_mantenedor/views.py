@@ -3,8 +3,13 @@ from django.shortcuts import render
 from .models import Insumo, Cliente, Paciente, Empleado, TipoEmpleado
 from .forms import InsumoForm
 # Create your views here.
+
+
+
 def index(request):
     return render(request, 'index.html')
+
+
 def clientes(request):
     cliente = Cliente.objects.all()
     data = {
@@ -22,7 +27,7 @@ def pacientes(request):
 
 def medico(request):
 
-    medico = Empleado.objects.filter(tipo_empleado_idtip_emp= 1)
+    medico = Empleado.objects.filter(tipo_empleado_idtip_emp = 1)
     data = {
         'medico' : medico,
     }
