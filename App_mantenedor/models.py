@@ -33,6 +33,8 @@ class Cliente(models.Model):
     genero_id_gen = models.ForeignKey('Genero', models.DO_NOTHING, db_column='Genero_id_Gen')  # Field name made lowercase.
     activo = models.IntegerField(blank=True, null=True)
     
+    def __str__(self):
+        return self.nom_cli
     class Meta:
         managed = False
         db_table = 'cliente'
@@ -42,6 +44,9 @@ class Comuna(models.Model):
     id_com = models.AutoField(primary_key=True)
     nom_com = models.CharField(max_length=45)
 
+    def __str__(self):
+        return self.nom_com
+    
     class Meta:
         managed = False
         db_table = 'comuna'
