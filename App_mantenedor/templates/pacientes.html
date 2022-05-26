@@ -12,7 +12,65 @@
 
 
 <div class="container mt-3">
-    <h2>Lista Pacientes</h2>
+  <h2>Lista Pacientes</h2>
+      <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+      + Agregar Paciente
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel3">Agregar Paciente</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="insumo row g-3" method="POST">
+              {% csrf_token %}
+    
+              
+              <div class="col-12">
+                <label for="nombre" class="form-label">Nombre Paciente*</label>
+                <input type="text" name="nom_pac" class="form-control" id="inputAddress">
+              </div>
+              <div class="col-12">
+                <label for="nombre" class="form-label">Fecha Nacimiento</label>
+                <input type="text" name="fec_nac" class="form-control" id="inputAddress" placeholder="ej: 20/02/22">
+              </div>
+              <div class="col-12">
+                <label for="inventario" class="form-label">Raza*</label>
+                <input type="text" name="raza" class="form-control" id="inputAddress2" placeholder="ej: San Bernardo">
+              </div>
+              <div class="col-12">
+                <label for="nombre" class="form-label"> Color*</label>
+                <input type="text" name="color" class="form-control" id="inputAddress" placeholder="ej: Cafe">
+              </div>
+              <div class="col-12">
+                <label for="nombre" class="form-label">ID Especie*</label>
+                <input type="text" name="especie_id_esp" class="form-control" id="inputAddress" placeholder="ej: 1(Canino), 2(Felino), 3(Ave), 4(Roedor), 5(Anfibio), 6(Reptil)">
+              </div>
+              <div class="col-12">
+                <label for="nombre" class="form-label"> ID Cliente*</label>
+                <input type="text" name="cliente_id_cli" class="form-control" id="inputAddress" >
+              </div>
+              <div class="col-12">
+                <label for="nombre" class="form-label">Activo*</label>
+                <input type="text" name="activo" class="form-control" id="inputAddress" placeholder="ej: 1(Activo), 0(Desactivado)">
+              </div>
+              
+              <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Almacenar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            
+          </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>           
                 
     <table class="table table-bordered">
       <thead>
