@@ -1,6 +1,6 @@
 from django import views
 from django.urls import path
-from .views import clientes, index, insumos, pacientes, reserva_horas, medico
+from .views import clientes, index, insumos, modificar_insumo, pacientes, reserva_horas, medico
 
 urlpatterns = [
     path('index/', index, name='index'),
@@ -9,6 +9,7 @@ urlpatterns = [
     path('medico/', medico, name='medico'),
     path('insumos/', insumos, name='insumos'),
     path('reserva_horas/', reserva_horas, name='reserva_horas'),
+    path('modificar_insumo/<id_insumo>/', modificar_insumo, name="modificar_insumo"), 
     
    
    

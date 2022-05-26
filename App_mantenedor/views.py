@@ -1,5 +1,5 @@
 from sqlite3 import DatabaseError
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Insumo, Cliente, Paciente, Empleado, TipoEmpleado
 from .forms import InsumoForm
 # Create your views here.
@@ -64,3 +64,19 @@ def reserva_horas(request):
     return render(request, 'reserva_horas.html')
 
 
+
+def modificar_insumo(request, id_insumo):
+    
+    insumo = get_object_or_404(Insumo, id_insumo=id_insumo)
+    data = {
+        'form': InsumoForm(instance=insumo)
+    }
+    if request.method == 'POST':
+        formulario = InsumoForm(data=request.POST, instance=insumo, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="insumos")
+        data["form"] = formulario
+
+
+    return render(request, 'modificar_insumo.html', data)

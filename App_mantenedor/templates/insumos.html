@@ -3,7 +3,7 @@
 {% block title %} Insumos {% endblock %}
 
 {% block content %}
-
+{% load crispy_forms_tags %}
 
 <h1>
     Insumos
@@ -54,7 +54,7 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Codigo</th>
+          
           <th>Descripción</th>
           <th>Cantidad</th>
           <th class="text-center">Accion</th>
@@ -64,13 +64,15 @@
       <tbody>
         {% for i in insumos %}
         <tr>
-          <td>{{ i.id_insumo }}</td>
+          
           <td>{{ i.nombre }}</td>
           <td class="text-center">{{ i.inventario }}</td>
-          <td><button type="button" class="btn btn-warning m-1">Editar
-            <button type="button" class="btn btn-danger">Eliminar</button>
-          </button></td>
           
+          <td> 
+            <a href="{% url 'modificar_insumo' i.id_insumo %}" class="btn btn-warning m-1">Editar</a>
+          </td>
+
+          <td><button type="button" class="btn btn-danger">Eliminar</button></td>
         </tr>
         {% endfor %}
       </tbody>
