@@ -21,23 +21,6 @@ class AppClienteContacto(models.Model):
         db_table = 'app_cliente_contacto'
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Cliente(models.Model):
     id_cli = models.AutoField(primary_key=True)
     rut_cli = models.CharField(max_length=10)
@@ -48,7 +31,8 @@ class Cliente(models.Model):
     direccion = models.CharField(max_length=45)
     comuna_id_com = models.ForeignKey('Comuna', models.DO_NOTHING, db_column='Comuna_id_com')  # Field name made lowercase.
     genero_id_gen = models.ForeignKey('Genero', models.DO_NOTHING, db_column='Genero_id_Gen')  # Field name made lowercase.
-
+    activo = models.IntegerField(blank=True, null=True)
+    
     class Meta:
         managed = False
         db_table = 'cliente'
@@ -63,18 +47,6 @@ class Comuna(models.Model):
         db_table = 'comuna'
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 class Empleado(models.Model):
     id_emp = models.AutoField(primary_key=True)
     rut_emp = models.CharField(max_length=10)
@@ -86,7 +58,7 @@ class Empleado(models.Model):
     genero_id_gen = models.ForeignKey('Genero', models.DO_NOTHING, db_column='Genero_id_Gen')  # Field name made lowercase.
     comuna_id_com = models.ForeignKey(Comuna, models.DO_NOTHING, db_column='Comuna_id_com')  # Field name made lowercase.
     tipo_empleado_idtip_emp = models.ForeignKey('TipoEmpleado', models.DO_NOTHING, db_column='tipo_empleado_idTip_Emp')  # Field name made lowercase.
-
+    activo = models.IntegerField(blank=True, null=True)
     
     def __str__(self):
         return self.rut_emp
@@ -132,7 +104,7 @@ class Paciente(models.Model):
     color = models.CharField(max_length=45)
     especie_id_esp = models.ForeignKey(Especie, models.DO_NOTHING, db_column='Especie_id_Esp')  # Field name made lowercase.
     cliente_id_cli = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='cliente_id_cli')
-
+    activo = models.IntegerField(blank=True, null=True)
     class Meta:
         managed = False
         db_table = 'paciente'
@@ -244,3 +216,31 @@ class TipoEmpleado(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_empleado'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
