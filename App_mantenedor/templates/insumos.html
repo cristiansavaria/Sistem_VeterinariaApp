@@ -62,7 +62,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for i in insumos %}
+        {% for i in entity %}
         <tr>
           
           <td>{{ i.nombre }}</td>
@@ -77,6 +77,10 @@
         {% endfor %}
       </tbody>
     </table>
+    <hr>
+    <div>
+      {% include 'paginator.html' %}
+    </div>
   </div>
 
 <hr>

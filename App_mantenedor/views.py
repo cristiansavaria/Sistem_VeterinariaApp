@@ -1,7 +1,10 @@
 from sqlite3 import DatabaseError
+from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Insumo, Cliente, Paciente, Empleado, TipoEmpleado
 from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm
+from django.core.paginator import Paginator
+from django.http import Http404
 # Create your views here.
 
 
@@ -66,9 +69,16 @@ def insumos(request):
     
     
     insumos = Insumo.objects.all()
+    page = request.GET.get('page',1)
+    try:
+        paginator = Paginator(insumos, 7)
+        insumos = paginator.page(page)
+    except:
+        raise Http404
     data = {
-        'insumos': insumos,
-        'form': InsumoForm()
+        'entity': insumos,
+        'form': InsumoForm(),
+        'paginator': paginator
     }
     if request.method == 'POST':
         formulario = InsumoForm(data=request.POST)
