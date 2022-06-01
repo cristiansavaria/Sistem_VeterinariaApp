@@ -162,3 +162,11 @@ def modificar_paciente(request, id_pac):
 
 
     return render(request, 'modificar_paciente.html', data)
+
+
+
+
+
+
+def login_admin(request):
+    return render(request, 'login_admin.html')
