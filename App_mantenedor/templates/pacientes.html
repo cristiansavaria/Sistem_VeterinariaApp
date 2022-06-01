@@ -52,8 +52,8 @@
                 <input type="text" name="especie_id_esp" class="form-control" id="inputAddress" placeholder="ej: 1(Canino), 2(Felino), 3(Ave), 4(Roedor), 5(Anfibio), 6(Reptil)">
               </div>
               <div class="col-12">
-                <label for="nombre" class="form-label"> ID Cliente*</label>
-                <input type="text" name="cliente_id_cli" class="form-control" id="inputAddress" >
+                <label for="nombre" class="form-label"> Rut Cliente*</label>
+                <input type="text" name="cliente_id_rut" class="form-control" id="inputAddress" >
               </div>
               <div class="col-12">
                 <label for="nombre" class="form-label">Activo*</label>
@@ -90,7 +90,7 @@
           <td>{{ p.nom_pac }}</td>
           <td class="text-center">{{ p.fec_nac }}</td>
           <td class="text-center">{{ p.raza }}</td>
-          <td class="text-center">{{ p.cliente_id_cli }}</td>
+          <td class="text-center">{{ p.cliente_id_rut }}</td>
           <td class="text-center">{{ p.especie_id_esp }}</td>
           <td><button type="button" class="btn btn-warning">Editar</button></td>
           <td><button type="button" class="btn btn-danger">Eliminar</button></td>

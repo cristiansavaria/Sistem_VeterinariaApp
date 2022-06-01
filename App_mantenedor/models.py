@@ -101,7 +101,8 @@ class Cliente(models.Model):
     comuna_id_com = models.ForeignKey('Comuna', models.DO_NOTHING, db_column='Comuna_id_com')  # Field name made lowercase.
     genero_id_gen = models.ForeignKey('Genero', models.DO_NOTHING, db_column='Genero_id_Gen')  # Field name made lowercase.
     activo = models.IntegerField(blank=True, null=True)
-
+    def __str__(self):
+        return self.nom_cli
     class Meta:
         managed = False
         db_table = 'cliente'
@@ -110,7 +111,8 @@ class Cliente(models.Model):
 class Comuna(models.Model):
     id_com = models.AutoField(primary_key=True)
     nom_com = models.CharField(max_length=45)
-
+    def __str__(self):
+        return self.nom_com
     class Meta:
         managed = False
         db_table = 'comuna'
@@ -172,7 +174,8 @@ class Empleado(models.Model):
     comuna_id_com = models.ForeignKey(Comuna, models.DO_NOTHING, db_column='Comuna_id_com')  # Field name made lowercase.
     tipo_empleado_idtip_emp = models.ForeignKey('TipoEmpleado', models.DO_NOTHING, db_column='tipo_empleado_idTip_Emp')  # Field name made lowercase.
     activo = models.IntegerField(blank=True, null=True)
-
+    def __str__(self):
+        return self.nom_emp
     class Meta:
         managed = False
         db_table = 'empleado'
@@ -181,7 +184,8 @@ class Empleado(models.Model):
 class Especie(models.Model):
     id_esp = models.AutoField(db_column='id_Esp', primary_key=True)  # Field name made lowercase.
     nom_esp = models.CharField(max_length=45)
-
+    def __str__(self):
+        return self.nom_esp
     class Meta:
         managed = False
         db_table = 'especie'
@@ -190,7 +194,8 @@ class Especie(models.Model):
 class Genero(models.Model):
     id_gen = models.AutoField(db_column='id_Gen', primary_key=True)  # Field name made lowercase.
     nom_gen = models.CharField(max_length=45)
-
+    def __str__(self):
+        return self.nom_gen
     class Meta:
         managed = False
         db_table = 'genero'
@@ -200,7 +205,8 @@ class Insumo(models.Model):
     id_insumo = models.AutoField(db_column='id_Insumo', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(max_length=45)
     inventario = models.IntegerField()
-
+    def __str__(self):
+        return self.nombre
     class Meta:
         managed = False
         db_table = 'insumo'
@@ -215,7 +221,8 @@ class Paciente(models.Model):
     especie_id_esp = models.ForeignKey(Especie, models.DO_NOTHING, db_column='Especie_id_Esp')  # Field name made lowercase.
     cliente_id_rut = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='cliente_id_rut')
     activo = models.IntegerField(blank=True, null=True)
-
+    def __str__(self):
+        return self.nom_pac
     class Meta:
         managed = False
         db_table = 'paciente'
@@ -228,7 +235,8 @@ class Pago(models.Model):
     total = models.IntegerField()
     tip_pago_id_tip_pago = models.ForeignKey('TipPago', models.DO_NOTHING, db_column='tip_pago_id_tip_pago')
     reserva_id_res = models.ForeignKey('Reserva', models.DO_NOTHING, db_column='Reserva_id_Res')  # Field name made lowercase.
-
+    def __str__(self):
+        return self.tip_pago_id_tip_pago
     class Meta:
         managed = False
         db_table = 'pago'
@@ -242,7 +250,8 @@ class ProcedPacien(models.Model):
     indicacion = models.CharField(max_length=45)
     fec_pro = models.DateTimeField()
     empleado_id_emp = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='empleado_id_emp', blank=True, null=True)
-
+    def __str__(self):
+        return self.descripcion
     class Meta:
         managed = False
         db_table = 'proced_pacien'
@@ -251,7 +260,8 @@ class ProcedPacien(models.Model):
 class Procedimiento(models.Model):
     id_proc = models.AutoField(db_column='id_Proc', primary_key=True)  # Field name made lowercase.
     nom_pro = models.CharField(max_length=45)
-
+    def __str__(self):
+        return self.nom_pro
     class Meta:
         managed = False
         db_table = 'procedimiento'
@@ -279,7 +289,8 @@ class Servicio(models.Model):
     nom_serv = models.CharField(max_length=45)
     precio = models.IntegerField(blank=True, null=True)
     detalle = models.CharField(max_length=300, blank=True, null=True)
-
+    def __str__(self):
+        return self.nom_serv
     class Meta:
         managed = False
         db_table = 'servicio'
@@ -312,7 +323,8 @@ class SolicitudInsumo(models.Model):
 class TipPago(models.Model):
     id_tip_pago = models.AutoField(primary_key=True)
     nom_tp_pago = models.CharField(max_length=45)
-
+    def __str__(self):
+        return self.nom_tp_pago
     class Meta:
         managed = False
         db_table = 'tip_pago'
@@ -321,7 +333,8 @@ class TipPago(models.Model):
 class TipoEmpleado(models.Model):
     idtip_emp = models.AutoField(db_column='idTip_Emp', primary_key=True)  # Field name made lowercase.
     nom_tp_em = models.CharField(max_length=45)
-
+    def __str__(self):
+        return self.nom_tp_em
     class Meta:
         managed = False
         db_table = 'tipo_empleado'
