@@ -19,8 +19,8 @@ def contacto(request):
         formulario = ContactoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            subject=request.POST["nombre"]
-            message=request.POST["mensaje"] + " " + request.POST["correo"] + " " + request.POST["tipo_consulta"]
+            subject=request.POST["tipo_consulta"]
+            message=request.POST["mensaje"] + "--- mi correo es --- " + request.POST["correo"] + " --- mi nombre es ---  " + request.POST["nombre"]
             email_from=settings.EMAIL_HOST_USER
             recipient_list=["clinica.huellitas2022@gmail.com"]
             send_mail(subject, message, email_from, recipient_list )

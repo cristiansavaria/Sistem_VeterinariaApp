@@ -1,7 +1,7 @@
 from sqlite3 import DatabaseError
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Insumo, Cliente, Paciente, Empleado, TipoEmpleado
-from .forms import InsumoForm, PacienteForm
+from .forms import InsumoForm
 # Create your views here.
 
 
@@ -20,18 +20,8 @@ def clientes(request):
 def pacientes(request):
     pacientes = Paciente.objects.all()
     data = {
-        'pacientes' : pacientes,
-        'form': PacienteForm()
+        'pacientes' : pacientes
     }
-    if request.method == 'POST':
-        formulario = PacienteForm(data=request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            
-            
-            
-            
-        data["form"] = formulario
 
     return render(request, 'pacientes.html', data)
 
