@@ -45,12 +45,12 @@ def registro(request):
             
         data["form"] = formulario
         
-    return render(request, 'registration/registro.html', data)
+    return render(request, 'registro.html', data)
    
     
 
 def login(request):
-    return render(request, 'registration/login.html')
+    return render(request, 'login.html')
 
 
 def historial(request):
