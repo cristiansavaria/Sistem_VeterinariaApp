@@ -1,5 +1,6 @@
 from sqlite3 import DatabaseError
 from django.http import Http404
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Insumo, Cliente, Paciente, Empleado, TipoEmpleado
 from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm
@@ -176,3 +177,11 @@ def modificar_paciente(request, id_pac):
 
 
     return render(request, 'modificar_paciente.html', data)
+
+
+
+
+
+
+def login(request):
+    return render(request, 'registration/login.html')
