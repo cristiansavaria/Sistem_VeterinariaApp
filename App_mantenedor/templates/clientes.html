@@ -1,120 +1,180 @@
-{% extends 'index.html' %}
-{% load static %}
-{% block title %} Clientes {% endblock %}
+{% extends 'index.html' %} {% load static %} {% block title %} Clientes {%
+endblock %} {% block content %}
 
-{% block content %}
-
-
-<h1>
-    Clientes
-</h1>
-
-
+<h1>Clientes</h1>
 
 <div class="container mt-3">
-    <h2>Lista Clientes</h2>
+  <h2>Lista Clientes</h2>
 
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal4">
-        + Agregar Cliente
-      </button>
-      
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel4">Agregar Cliente</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form class="insumo row g-3" method="POST">
-                {% csrf_token %}
-      
-                
-                <div class="col-12">
-                  <label for="rut" class="form-label">Rut Cliente*</label>
-                  <input type="text" name="id_rut" class="form-control" id="inputAddress">
-                </div>
-                <div class="col-12">
-                  <label for="nombre" class="form-label">Nombre*</label>
-                  <input type="text" name="nom_cli" class="form-control" id="inputAddress" >
-                </div>
-                <div class="col-12">
-                  <label for="apellido" class="form-label">Apellidos</label>
-                  <input type="text" name="ap_cli" class="form-control" id="inputAddress2">
-                </div>
-                <div class="col-12">
-                  <label for="telefono" class="form-label"> telefono*</label>
-                  <input type="text" name="telefono" class="form-control" id="inputAddress" >
-                </div>
-                <div class="col-12">
-                  <label for="email" class="form-label">Email*</label>
-                  <input type="text" name="email" class="form-control" id="inputAddress" placeholder="ej: huellitas@gmail.com">
-                </div>
-                <div class="col-12">
-                  <label for="direccion" class="form-label"> Dirección*</label>
-                  <input type="text" name="direccion" class="form-control" id="inputAddress" >
-                </div>
-                <div class="col-12">
-                  <label for="comuna" class="form-label">Comuna*</label>
-                  <input type="text" name="comuna_id_com" class="form-control" id="inputAddress">
-                </div>
-                <div class="col-12">
-                  <label for="genero" class="form-label">Genero*</label>
-                  <input type="text" name="genero_id_gen" class="form-control" id="inputAddress" placeholder="ej: 1(Femenino), 2(Masculino), 3(Otro) ">
-                </div>
-                <div class="col-12">
-                  <label for="activo" class="form-label">Activo*</label>
-                  <input type="text" name="activo" class="form-control" id="inputAddress" placeholder="ej: 1(Activo), 0(Desactivado)">
-                </div>
-                
-                <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Almacenar</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              
-            </div>
-              </form>
-            </div>
-            
-          </div>
+  <!-- Button trigger modal -->
+  <button
+    type="button"
+    class="btn btn-primary float-end mb-3"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal4"
+  >
+    + Agregar Cliente
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal4"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel4"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel4">Agregar Cliente</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
-      </div>    
-                
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Rut</th>
-          <th>Nombre</th>
-          <th>Telefono</th>
-          <th>Correo</th>
-          <th>Dirección</th>
-          <th>Comuna</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for c in entity %}
-        <tr>
-          <td>{{ c.id_rut }}</td>
-          <td>{{ c.nom_cli }} {{ c.ap_cli }}</td>
-          <td class="text-center">{{ c.telefono }}</td>
-          <td class="text-center">{{ c.email }}</td>
-          <td class="text-center">{{ c.direccion }}</td>
-          <td class="text-center">{{ c.comuna_id_com }}</td>
-          
-          <td> 
-            <a href="{% url 'modificar_cliente' c.id_rut %}" class="btn btn-warning m-1">Editar</a>
-          </td>
-          <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    <hr>
-    <div>
-      {% include 'paginator.html' %}
+        <div class="modal-body">
+          <form class="insumo row g-3" method="POST">
+            {% csrf_token %}
+
+            <div class="col-12">
+              <label for="rut" class="form-label">Rut Cliente*</label>
+              <input
+                type="text"
+                name="id_rut"
+                class="form-control"
+                id="inputAddress"
+              />
+            </div>
+            <div class="col-12">
+              <label for="nombre" class="form-label">Nombre*</label>
+              <input
+                type="text"
+                name="nom_cli"
+                class="form-control"
+                id="inputAddress"
+              />
+            </div>
+            <div class="col-12">
+              <label for="apellido" class="form-label">Apellidos</label>
+              <input
+                type="text"
+                name="ap_cli"
+                class="form-control"
+                id="inputAddress2"
+              />
+            </div>
+            <div class="col-12">
+              <label for="telefono" class="form-label"> telefono*</label>
+              <input
+                type="text"
+                name="telefono"
+                class="form-control"
+                id="inputAddress"
+              />
+            </div>
+            <div class="col-12">
+              <label for="email" class="form-label">Email*</label>
+              <input
+                type="text"
+                name="email"
+                class="form-control"
+                id="inputAddress"
+                placeholder="ej: huellitas@gmail.com"
+              />
+            </div>
+            <div class="col-12">
+              <label for="direccion" class="form-label"> Dirección*</label>
+              <input
+                type="text"
+                name="direccion"
+                class="form-control"
+                id="inputAddress"
+              />
+            </div>
+            <div class="col-12">
+              <label for="comuna" class="form-label">Comuna*</label>
+              <input
+                type="text"
+                name="comuna_id_com"
+                class="form-control"
+                id="inputAddress"
+              />
+            </div>
+            <div class="col-12">
+              <label for="genero" class="form-label">Genero*</label>
+              <input
+                type="text"
+                name="genero_id_gen"
+                class="form-control"
+                id="inputAddress"
+                placeholder="ej: 1(Femenino), 2(Masculino), 3(Otro) "
+              />
+            </div>
+            <div class="col-12">
+              <label for="activo" class="form-label">Activo*</label>
+              <input
+                type="text"
+                name="activo"
+                class="form-control"
+                id="inputAddress"
+                placeholder="ej: 1(Activo), 0(Desactivado)"
+              />
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Almacenar</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Rut</th>
+        <th>Nombre</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Dirección</th>
+        <th>Comuna</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in entity %}
+      <tr>
+        <td>{{ c.id_rut }}</td>
+        <td>{{ c.nom_cli }} {{ c.ap_cli }}</td>
+        <td class="text-center">{{ c.telefono }}</td>
+        <td class="text-center">{{ c.email }}</td>
+        <td class="text-center">{{ c.direccion }}</td>
+        <td class="text-center">{{ c.comuna_id_com }}</td>
+
+        <td>
+          <a
+            href="{% url 'modificar_cliente' c.id_rut %}"
+            class="btn btn-warning m-1"
+            >Editar</a
+          >
+        </td>
+        <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <hr />
+  <div>{% include 'paginator.html' %}</div>
+</div>
 
 {% endblock %}
