@@ -1,6 +1,8 @@
 from django import views
 from django.urls import path
-from .views import clientes, index, insumos, login_admin, modificar_cliente, modificar_insumo, modificar_medico, modificar_paciente, pacientes, reserva_horas, medico
+
+
+from .views import clientes, index, insumos, login, modificar_cliente, modificar_insumo, modificar_medico, modificar_paciente, pacientes, reserva_horas, medico
 
 urlpatterns = [
     path('index/', index, name='index'),
@@ -13,7 +15,7 @@ urlpatterns = [
     path('modificar_cliente/<id_rut>/', modificar_cliente, name="modificar_cliente"), 
     path('modificar_medico/<id_emp>/', modificar_medico, name="modificar_medico"), 
     path('modificar_paciente/<id_pac>/', modificar_paciente, name="modificar_paciente"), 
-    path('login_admin/', login_admin, name='login_admin'),
+    path('login/', login, name='login'),
     
    
    
