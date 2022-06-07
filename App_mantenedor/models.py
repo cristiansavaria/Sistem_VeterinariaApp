@@ -102,7 +102,7 @@ class Cliente(models.Model):
     genero_id_gen = models.ForeignKey('Genero', models.DO_NOTHING, db_column='Genero_id_Gen')  # Field name made lowercase.
     activo = models.IntegerField(blank=True, null=True)
     def __str__(self):
-        return self.nom_cli
+        return self.id_rut
     class Meta:
         managed = False
         db_table = 'cliente'

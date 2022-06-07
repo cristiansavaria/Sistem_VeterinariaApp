@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import ContactoForm, RegistroUsuario
 from django.core.mail import send_mail
 from django.conf import settings
+from .models import Contacto
 # Create your views here.
 def base(request):
     return render(request, 'base.html')
@@ -10,13 +11,17 @@ def servicio(request):
 def reserva_hora(request):
     return render(request, 'reserva_hora.html')
 
+
 def contacto(request):
+   
     data = {
         'form' : ContactoForm()
     }
 
+ 
     if request.method == 'POST':
         formulario = ContactoForm(data=request.POST)
+       
         if formulario.is_valid():
             formulario.save()
             subject=request.POST["tipo_consulta"]
