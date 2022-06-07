@@ -10,10 +10,16 @@ from django.http import Http404
 
 
 
+def login(request):
+    return render(request, 'registration/login.html')
+
+
+
+@login_required()
 def index(request):
     return render(request, 'index.html')
 
-
+@login_required()
 def clientes(request):
     cliente = Cliente.objects.all()
     page = request.GET.get('page',1)
@@ -36,7 +42,7 @@ def clientes(request):
         data["form"] = formulario
 
     return render(request, 'clientes.html', data)
-
+@login_required()
 def pacientes(request):
     pacientes = Paciente.objects.all()
     page = request.GET.get('page',1)
@@ -61,7 +67,7 @@ def pacientes(request):
         data["form"] = formulario
 
     return render(request, 'pacientes.html', data)
-
+@login_required()
 def medico(request):
     medico = Empleado.objects.filter(tipo_empleado_idtip_emp = 1)
     page = request.GET.get('page',1)
@@ -84,7 +90,7 @@ def medico(request):
        
     return render(request, 'medico.html', data)
 
-
+@login_required()
 def insumos(request):
     insumos = Insumo.objects.all()
     page = request.GET.get('page',1)
@@ -111,12 +117,12 @@ def insumos(request):
 
 
 
-
+@login_required()
 def reserva_horas(request):
     return render(request, 'reserva_horas.html')
 
 
-
+@login_required()
 def modificar_insumo(request, id_insumo):
     
     insumo = get_object_or_404(Insumo, id_insumo=id_insumo)
@@ -132,7 +138,7 @@ def modificar_insumo(request, id_insumo):
 
 
     return render(request, 'modificar_insumo.html', data)
-
+@login_required()
 def modificar_cliente(request, id_rut):
     cliente = get_object_or_404(Cliente, id_rut=id_rut)
     data = {
@@ -147,7 +153,7 @@ def modificar_cliente(request, id_rut):
 
 
     return render(request, 'modificar_cliente.html', data)
-
+@login_required()
 def modificar_medico(request, id_emp):
     medico = get_object_or_404(Empleado, id_emp=id_emp)
     data = {
@@ -162,7 +168,7 @@ def modificar_medico(request, id_emp):
 
 
     return render(request, 'modificar_medico.html', data)
-
+@login_required()
 def modificar_paciente(request, id_pac):
     paciente = get_object_or_404(Paciente, id_pac=id_pac)
     data = {
@@ -183,5 +189,3 @@ def modificar_paciente(request, id_pac):
 
 
 
-def login(request):
-    return render(request, 'registration/login.html')
