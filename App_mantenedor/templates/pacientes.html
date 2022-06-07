@@ -83,7 +83,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for p in pacientes %}
+        {% for p in entity %}
         <tr>
           <td>{{ p.nom_pac }}</td>
           <td class="text-center">{{ p.fec_nac }}</td>
@@ -98,6 +98,10 @@
         {% endfor %}
       </tbody>
     </table>
+    <hr>
+    <div>
+      {% include 'paginator.html' %}
+    </div>
   </div>
 
 {% endblock %}

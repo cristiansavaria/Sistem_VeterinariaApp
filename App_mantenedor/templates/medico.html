@@ -96,7 +96,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for m in medico %}
+        {% for m in entity %}
         <tr>
           <td>{{ m.tipo_empleado_idtip_emp }}</td>
           <td>{{ m.id_emp }}</td>
@@ -112,6 +112,10 @@
         {% endfor %}
       </tbody>
     </table>
+    <hr>
+    <div>
+      {% include 'paginator.html' %}
+    </div>
   </div>
 
 

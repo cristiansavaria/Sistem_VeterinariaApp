@@ -16,9 +16,16 @@ def index(request):
 
 def clientes(request):
     cliente = Cliente.objects.all()
+    page = request.GET.get('page',1)
+    try:
+        paginator = Paginator(cliente, 7)
+        cliente = paginator.page(page)
+    except:
+        raise Http404
     data = {
-        'cliente' : cliente,
-        'form': ClienteForm()
+        'entity': cliente,
+        'form': ClienteForm(),
+        'paginator': paginator
     }
     if request.method == 'POST':
         formulario = ClienteForm(data=request.POST)
@@ -32,9 +39,16 @@ def clientes(request):
 
 def pacientes(request):
     pacientes = Paciente.objects.all()
+    page = request.GET.get('page',1)
+    try:
+        paginator = Paginator(pacientes, 7)
+        pacientes = paginator.page(page)
+    except:
+        raise Http404
     data = {
-        'pacientes' : pacientes,
-        'form': PacienteForm()
+        'entity': pacientes,
+        'form': PacienteForm(), 
+        'paginator': paginator
     }
     if request.method == 'POST':
         formulario = PacienteForm(data=request.POST)
@@ -49,17 +63,22 @@ def pacientes(request):
     return render(request, 'pacientes.html', data)
 
 def medico(request):
-
     medico = Empleado.objects.filter(tipo_empleado_idtip_emp = 1)
+    page = request.GET.get('page',1)
+    try:
+        paginator = Paginator(medico, 7)
+        medico = paginator.page(page)
+    except:
+        raise Http404
     data = {
-        'medico' : medico,
-        'form': MedicoForm()
+        'entity': medico,
+        'form': MedicoForm(),
+        'paginator': paginator
     }
     if request.method == 'POST':
         formulario = MedicoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            
             
         data["form"] = formulario
        
@@ -67,8 +86,6 @@ def medico(request):
 
 
 def insumos(request):
-    
-    
     insumos = Insumo.objects.all()
     page = request.GET.get('page',1)
     try:
@@ -85,10 +102,7 @@ def insumos(request):
         formulario = InsumoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            
-            
-            
-            
+                
         data["form"] = formulario
 
 
