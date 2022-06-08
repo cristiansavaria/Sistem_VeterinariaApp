@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Insumos {% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<div class="container mt-3 ">
+    <h2>Formulario Contacto recibidos</h2>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Tipo Consulta</th>
+          <th>Mensaje</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in entity %}
+        <tr>
+          
+          <td>{{ c.nombre }}</td>
+          <td class="text-center">{{ c.correo }}</td>
+          <td class="text-center">{{ c.tipo_consulta }}</td>
+          <td>{{ c.mensaje }}</td>
+        </tr>
+       
+
+
+        {% endfor %}
+
+      </tbody>
+    </table>
+    <hr>
+    <div>
+      {% include 'paginator.html' %}
+    </div>
+    
+  </div>
+
+ 
+
+<hr>
+<div class="container">
+    
+
+  </div>
+{% endblock %}
+

@@ -2,8 +2,8 @@
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Insumo, Cliente, Paciente, Empleado
-from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm
+from .models import Insumo, Cliente, Paciente, Empleado, AppClienteContacto
+from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm, ContactoRForm
 from django.core.paginator import Paginator
 from django.http import Http404
 # Create your views here.
@@ -187,3 +187,27 @@ def modificar_paciente(request, id_pac):
         data["form"] = formulario
 
     return render(request, 'modificar_paciente.html', data)
+
+@login_required()
+def contacto_recibido(request):
+    contacto_re = AppClienteContacto.objects.all()
+    page = request.GET.get('page', 1)
+    try:
+        paginator = Paginator(contacto_re, 7)
+        contacto_re = paginator.page(page)
+    except:
+        raise Http404
+    data = {
+        'entity': contacto_re,
+        'form': ContactoRForm(),
+        'paginator': paginator,
+        
+    }
+    
+    if request.method == 'POST':
+        formulario = ContactoRForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+        data["form"] = formulario
+
+    return render(request, 'contacto_recibido.html', data)

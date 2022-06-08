@@ -24,11 +24,11 @@ def contacto(request):
        
         if formulario.is_valid():
             formulario.save()
-            subject=request.POST["tipo_consulta"]
-            message=request.POST["mensaje"] + "--- mi correo es --- " + request.POST["correo"] + " --- mi nombre es ---  " + request.POST["nombre"]
-            email_from=settings.EMAIL_HOST_USER
-            recipient_list=["clinica.huellitas2022@gmail.com"]
-            send_mail(subject, message, email_from, recipient_list )
+            #subject=request.POST["tipo_consulta"]
+            #message=request.POST["mensaje"] + "--- mi correo es --- " + request.POST["correo"] + " --- mi nombre es ---  " + request.POST["nombre"]
+            #email_from=settings.EMAIL_HOST_USER
+            #recipient_list=["clinica.huellitas2022@gmail.com"]
+            #send_mail(subject, message, email_from, recipient_list )
 
             data["mensaje"] = "contacto guardado"
         else:
