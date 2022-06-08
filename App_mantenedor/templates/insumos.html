@@ -69,11 +69,13 @@
           <td class="text-center">{{ i.inventario }}</td>
           
           <td> 
-            <a href="{% url 'modificar_insumo' i.id_insumo %}" class="btn btn-warning m-1">Editar</a>
+            <a href="{% url 'modificar_insumo' i.id_insumo %}" class="btn btn-info m-1">Editar</a>
           </td>
 
-          <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-        </tr>
+          <td>
+        <a href="{% url 'eliminar_insumo' i.id_insumo %}" type="button" class="btn btn-danger">Eliminar</a>
+      </td>
+      </tr>
         {% endfor %}
       </tbody>
     </table>

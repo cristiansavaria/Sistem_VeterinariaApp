@@ -9,7 +9,6 @@ from django.http import Http404
 # Create your views here.
 
 
-
 def login(request):
     return render(request, 'registration/login.html')
 
@@ -188,6 +187,7 @@ def modificar_paciente(request, id_pac):
 
     return render(request, 'modificar_paciente.html', data)
 
+
 @login_required()
 def contacto_recibido(request):
     contacto_re = AppClienteContacto.objects.all()
@@ -201,9 +201,9 @@ def contacto_recibido(request):
         'entity': contacto_re,
         'form': ContactoRForm(),
         'paginator': paginator,
-        
+
     }
-    
+
     if request.method == 'POST':
         formulario = ContactoRForm(data=request.POST)
         if formulario.is_valid():
@@ -211,3 +211,16 @@ def contacto_recibido(request):
         data["form"] = formulario
 
     return render(request, 'contacto_recibido.html', data)
+
+
+def eliminar(request, id_insumo):
+    insumoe = get_object_or_404(Insumo, id_insumo=id_insumo)
+    insumoe.delete()
+    return redirect(to="insumos")
+
+
+def eliminar(request, id_emp):
+    empleado = get_object_or_404(Empleado, id_emp=id_emp)
+    empleado.delete()
+    return redirect(to="medico")
+
