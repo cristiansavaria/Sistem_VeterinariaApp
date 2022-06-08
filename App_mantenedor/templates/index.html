@@ -1,261 +1,271 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
 
+    <link rel="shortcut icon" href="{% static 'icon/patita.png' %}" />
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>{% block title %} Administrador Huellitas{% endblock %}</title>
 
-	<link rel="shortcut icon" href="{% static 'icon/patita.png' %}" />
+    <link href="{% static 'css/app.css' %}" rel="stylesheet" />
+  </head>
 
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+          <a class="sidebar-brand" href="#">
+            <span class="align-middle">Admin Huellitas</span>
+          </a>
 
+          <ul class="sidebar-nav">
+            <li class="sidebar-header">Admin</li>
 
-	<title>{% block title %} Administrador Huellitas{% endblock %}</title>
+            <li class="sidebar-item active">
+              <a class="sidebar-link" href="{% url 'index' %}">
+                <i class="align-middle" data-feather="sliders"></i>
+                <span class="align-middle">Home</span>
+              </a>
+            </li>
 
-	<link href="{% static 'css/app.css' %}" rel="stylesheet">
+            <li class="sidebar-item mt-2">
+              <a class="sidebar-link" href="{% url 'clientes' %}">
+                <i class="align-middle" data-feather="user"></i>
+                <span class="align-middle">Clientes</span>
+              </a>
+            </li>
+            <li class="sidebar-item mt-2">
+              <a class="sidebar-link" href="{% url 'medico' %}">
+                <i class="align-middle" data-feather="user"></i>
+                <span class="align-middle">Medico</span>
+              </a>
+            </li>
 
-</head>
+            <li class="sidebar-item mt-2">
+              <a class="sidebar-link" href="{% url 'pacientes' %}">
+                <i class="align-middle" data-feather="log-in"></i>
+                <span class="align-middle">Pacientes</span>
+              </a>
+            </li>
 
-<body>
-	<div class="wrapper">
-		<nav id="sidebar" class="sidebar js-sidebar">
-			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="#">
-					<span class="align-middle">Admin Huellitas</span>
-				</a>
+            <li class="sidebar-item mt-2">
+              <a class="sidebar-link" href="{% url 'insumos' %}">
+                <i class="align-middle" data-feather="user-plus"></i>
+                <span class="align-middle">Insumos</span>
+              </a>
+            </li>
 
-				<ul class="sidebar-nav">
-					<li class="sidebar-header">
-						Admin
-					</li>
+            <li class="sidebar-item mt-2">
+              <a class="sidebar-link" href="{% url 'reserva_horas' %}">
+                <i class="align-middle" data-feather="book"></i>
+                <span class="align-middle">Reservas Horas</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+          <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+          </a>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="{% url 'index' %}">
-							<i class="align-middle" data-feather="sliders"></i> <span
-								class="align-middle">Home</span>
-						</a>
-					</li>
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle"
+                  href="#"
+                  id="alertsDropdown"
+                  data-bs-toggle="dropdown"
+                >
+                  <div class="position-relative">
+                    <i class="align-middle" data-feather="bell"></i>
+                    <span class="indicator">4</span>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle"
+                  href="#"
+                  id="messagesDropdown"
+                  data-bs-toggle="dropdown"
+                >
+                  <div class="position-relative">
+                    <i class="align-middle" data-feather="message-square"></i>
+                  </div>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+                  aria-labelledby="messagesDropdown"
+                >
+                  <div class="dropdown-menu-header">
+                    <div class="position-relative">4 New Messages</div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="align-middle" data-feather="settings"></i>
+                </a>
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  {% if user.is_authenticated %}
+                  <img
+                    src="{% static 'icon/perfil.png' %}"
+                    class="avatar img-fluid rounded me-1"
+                    alt="Charles Hall"
+                  />Bienvenid@
+                  <span class="text-dark">
+                    {{ user.get_username|capfirst }}!</span
+                  >
+                </a>
 
-					<li class="sidebar-item mt-2">
-						<a class="sidebar-link" href="{% url 'clientes' %}">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Clientes</span>
-						</a>
-					</li>
-					<li class="sidebar-item mt-2">
-						<a class="sidebar-link" href="{% url 'medico' %}">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Medico</span>
-						</a>
-					</li>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a class="dropdown-item" href="#"
+                    ><i
+                      class="align-middle me-1"
+                      data-feather="help-circle"
+                    ></i>
+                    Centro de Ayuda</a
+                  >
 
-					<li class="sidebar-item mt-2">
-						<a class="sidebar-link" href="{% url 'pacientes' %}">
-							<i class="align-middle" data-feather="log-in"></i> <span
-								class="align-middle">Pacientes</span>
-						</a>
-					</li>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url 'logout' %}"
+                    >Cerrar Sesion</a
+                  >
+                </div>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-					<li class="sidebar-item mt-2 ">
-						<a class="sidebar-link" href="{% url 'insumos' %}">
-							<i class="align-middle" data-feather="user-plus"></i> <span
-								class="align-middle">Insumos</span>
-						</a>
-					</li>
+        {% block content %}
 
-					<li class="sidebar-item mt-2">
-						<a class="sidebar-link" href="{% url 'reserva_horas' %}">
-							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Reservas Horas</span>
-						</a>
-					</li>
-					
-					
-				</ul>
-			</div>
-		</nav>
-		<div class="main">
+        <h1>Medicos</h1>
 
+        <div class="container mt-3">
+          <h2>Bienvenidos al panel de Administracion</h2>
 
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+              </tr>
+              <tr>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+              </tr>
+              <tr>
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@example.com</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
+        {% endblock %}
+      </div>
+    </div>
 
-			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle js-sidebar-toggle">
-					<i class="hamburger align-self-center"></i>
-				</a>
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="row text-muted">
+          <div class="col-6 text-start">
+            <p class="mb-0">
+              <a class="text-muted" href="https://www.duoc.cl/" target="_blank"
+                ><strong>Panel de Administracion Huellitas</strong></a
+              >
+            </p>
+          </div>
+          <div class="col-6 text-end">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a
+                  class="text-muted"
+                  href="https://adminkit.io/"
+                  target="_blank"
+                  >Support</a
+                >
+              </li>
+              <li class="list-inline-item">
+                <a
+                  class="text-muted"
+                  href="https://adminkit.io/"
+                  target="_blank"
+                  >Help Center</a
+                >
+              </li>
+              <li class="list-inline-item">
+                <a
+                  class="text-muted"
+                  href="https://adminkit.io/"
+                  target="_blank"
+                  >Privacy</a
+                >
+              </li>
+              <li class="list-inline-item">
+                <a
+                  class="text-muted"
+                  href="https://adminkit.io/"
+                  target="_blank"
+                  >Terms</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-				<div class="navbar-collapse collapse">
-					<ul class="navbar-nav navbar-align">
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="bell"></i>
-									<span class="indicator">4</span>
-								</div>
-							</a>
-							
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown"
-								data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="message-square"></i>
-								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-								aria-labelledby="messagesDropdown">
-								<div class="dropdown-menu-header">
-									<div class="position-relative">
-										4 New Messages
-									</div>
-								</div>
-								
-								
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
-								data-bs-toggle="dropdown">
-								<i class="align-middle" data-feather="settings"></i>
-							</a>
-							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
-								data-bs-toggle="dropdown">
-								{% if user.is_authenticated %}
-								<img src="{% static 'icon/perfil.png' %}" class="avatar img-fluid rounded me-1"
-									alt="Charles Hall" />Bienvenid@ <span class="text-dark"> {{ user.get_username|capfirst }}!</span>
-								</a>
-								
-								<div class="dropdown-menu dropdown-menu-end">
-									<a class="dropdown-item" href="#"><i class="align-middle me-1"
-										data-feather="help-circle"></i> Centro de Ayuda</a>
-											
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a>
-									</div>
-								{% endif %}
-						</li>
-					</ul>
-				</div>
-			</nav>
+    <!-- Optional JavaScript; choose one of the two! -->
 
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
 
-								
-								
-								
-
-
-
-
-
-
-
-			{% block content %}
-
-
-
-<h1>
-	Medicos
-</h1>
-
-<div class="container mt-3">
-    <h2>Lista Medicos</h2>
-                
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Correo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
-        </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@example.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-
-
-
-
-
-
-
-			{% endblock %}
-
-
-
-		</div>
-	</div>
-
-
-
-
-	<footer class="footer">
-		<div class="container-fluid">
-			<div class="row text-muted">
-				<div class="col-6 text-start">
-					<p class="mb-0">
-						<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Admin Panel</strong></a>
-						
-					</p>
-				</div>
-				<div class="col-6 text-end">
-					<ul class="list-inline">
-						<li class="list-inline-item">
-							<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
-						</li>
-						<li class="list-inline-item">
-							<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
-						</li>
-						<li class="list-inline-item">
-							<a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
-						</li>
-						<li class="list-inline-item">
-							<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-
-
-	<!-- Optional JavaScript; choose one of the two! -->
-
-	<!-- Option 1: Bootstrap Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
-
-	<!-- Option 2: Separate Popper and Bootstrap JS -->
-	<!--
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
 
-
-	<script src="{% static 'js/app.js' %}"></script>
-
-
-
-</body>
-
+    <script src="{% static 'js/graficos.js' %}"></script>
+  </body>
 </html>
