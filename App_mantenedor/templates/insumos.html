@@ -14,10 +14,11 @@
 <div class="container mt-3 ">
     <h2>Lista de Insumos en Stock</h2>
          <!-- Button trigger modal -->
+{% if perms.App_mantenedor.add_insumo %}    
 <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
   + Agregar Insumo
 </button>
-
+{% endif %}
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -67,14 +68,16 @@
           
           <td>{{ i.nombre }}</td>
           <td class="text-center">{{ i.inventario }}</td>
-          
+          {% if perms.App_mantenedor.change_insumo %} 
           <td> 
             <a href="{% url 'modificar_insumo' i.id_insumo %}" class="btn btn-info m-1">Editar</a>
           </td>
-
+          {% endif %}
+          {% if perms.App_mantenedor.delete_insumo %} 
           <td>
         <a href="{% url 'eliminar_insumo' i.id_insumo %}" type="button" class="btn btn-danger">Eliminar</a>
       </td>
+      {% endif %}
       </tr>
         {% endfor %}
       </tbody>

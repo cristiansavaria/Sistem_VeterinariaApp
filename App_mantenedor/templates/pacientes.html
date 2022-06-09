@@ -14,10 +14,11 @@
 <div class="container mt-3">
   <h2>Lista Pacientes</h2>
       <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+      {% if perms.App_mantenedor.add_paciente %}
+      <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal3">
       + Agregar Paciente
     </button>
-    
+    {% endif %}
     <!-- Modal -->
     <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
       <div class="modal-dialog">
@@ -90,12 +91,16 @@
           <td class="text-center">{{ p.raza }}</td>
           <td class="text-center">{{ p.cliente_id_rut }}</td>
           <td class="text-center">{{ p.especie_id_esp }}</td>
+          {% if perms.App_mantenedor.change_paciente %}
           <td> 
             <a href="{% url 'modificar_paciente' p.id_pac %}" class="btn btn-info m-1">Editar</a>
           </td>
+          {% endif %}
+          {% if perms.App_mantenedor.delete_paciente %}
           <td> 
             <a href="{% url 'eliminar_paciente' p.id_pac %}" class="btn btn-danger m-1">Eliminar</a>
           </td>
+          {% endif %}
         </tr>
         {% endfor %}
       </tbody>

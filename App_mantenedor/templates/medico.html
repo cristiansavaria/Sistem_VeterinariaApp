@@ -16,10 +16,11 @@
 
 
       <!-- Button trigger modal -->
+      {% if perms.App_mantenedor.add_empleado %}
       <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal5">
         + Agregar Médico
       </button>
-      
+      {% endif %}
       <!-- Modal -->
       <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel5" aria-hidden="true">
         <div class="modal-dialog">
@@ -102,13 +103,16 @@
           <td>{{ m.id_emp }}</td>
           <td>{{ m.nom_emp }} {{ m.ap_emp }}</td>
           <td>{{ m.email }}</td>
+          {% if perms.App_mantenedor.change_empleado %}
           <td> 
             <a href="{% url 'modificar_medico' m.id_emp %}" class="btn btn-info m-1">Editar</a>
           </td>
+          {% endif %}
+          {% if perms.App_mantenedor.delete_empleado %}
           <td> 
             <a href="{% url 'eliminar_medico' m.id_emp %}" class="btn btn-danger m-1">Eliminar</a>
           </td>
-          
+          {% endif %}
           
         </tr>
         {% endfor %}

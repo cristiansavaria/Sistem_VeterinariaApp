@@ -37,9 +37,9 @@ def clientes(request):
         if formulario.is_valid():
             formulario.save()
             return redirect(to="clientes")
-            
+
         data["form"] = formulario
-        
+
     return render(request, 'clientes.html', data)
 
 

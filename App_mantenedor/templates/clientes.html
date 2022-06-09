@@ -9,6 +9,7 @@
   <h2>Lista Clientes</h2>
 
   <!-- Button trigger modal -->
+  {% if perms.App_mantenedor.add_cliente %}
   <button
     type="button"
     class="btn btn-primary float-end mb-3"
@@ -17,7 +18,7 @@
   >
     + Agregar Cliente
   </button>
-
+{% endif %}
   <!-- Modal -->
   <div
     class="modal fade"
@@ -29,7 +30,9 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
+          
           <h5 class="modal-title" id="exampleModalLabel4">Agregar Cliente</h5>
+          
           <button
             type="button"
             class="btn-close"
@@ -162,17 +165,24 @@
         <td class="text-center">{{ c.email }}</td>
         <td class="text-center">{{ c.direccion }}</td>
         <td class="text-center">{{ c.comuna_id_com }}</td>
-
+        
         <td>
+          {% if perms.change_cliente %}
           <a
             href="{% url 'modificar_cliente' c.id_rut %}"
             class="btn btn-info m-1"
             >Editar</a
           >
+          {% endif %}
         </td>
+        
+        
         <td> 
-          <a href="{% url 'eliminar_cliente' c.id_rut %}" class="btn btn-danger m-1">Eliminar</a>
+          {% if perms.App_mantenedor.delete_cliente %}
+              <a href="{% url 'eliminar_cliente' c.id_rut %}" class="btn btn-danger m-1">Eliminar</a>
+          {% endif %}
         </td>
+        
       </tr>
       {% endfor %}
     </tbody>

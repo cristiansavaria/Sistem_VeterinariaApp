@@ -40,40 +40,46 @@
                 <span class="align-middle">Home</span>
               </a>
             </li>
-
+            {% if perms.App_mantenedor.view_cliente %}
             <li class="sidebar-item mt-2">
               <a class="sidebar-link" href="{% url 'clientes' %}">
                 <i class="align-middle" data-feather="user"></i>
                 <span class="align-middle">Clientes</span>
               </a>
             </li>
+            {% endif %}
+            {% if perms.App_mantenedor.view_empleado %}
             <li class="sidebar-item mt-2">
               <a class="sidebar-link" href="{% url 'medico' %}">
                 <i class="align-middle" data-feather="user"></i>
                 <span class="align-middle">Medico</span>
               </a>
             </li>
-
+            {% endif %}
+            {% if perms.App_mantenedor.view_paciente %}
             <li class="sidebar-item mt-2">
               <a class="sidebar-link" href="{% url 'pacientes' %}">
                 <i class="align-middle" data-feather="log-in"></i>
                 <span class="align-middle">Pacientes</span>
               </a>
             </li>
-
+            {% endif %}
+            {% if perms.App_mantenedor.view_insumo %}
             <li class="sidebar-item mt-2">
               <a class="sidebar-link" href="{% url 'insumos' %}">
                 <i class="align-middle" data-feather="user-plus"></i>
                 <span class="align-middle">Insumos</span>
               </a>
             </li>
-
+            {% endif %}
+            {% if perms.App_mantenedor.view_reserva %}
             <li class="sidebar-item mt-2">
               <a class="sidebar-link" href="{% url 'reserva_horas' %}">
                 <i class="align-middle" data-feather="book"></i>
                 <span class="align-middle">Reservas Horas</span>
               </a>
             </li>
+            {% endif %}
           </ul>
         </div>
       </nav>
