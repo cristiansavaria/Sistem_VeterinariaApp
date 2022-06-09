@@ -219,7 +219,7 @@ class Paciente(models.Model):
     raza = models.CharField(max_length=45)
     color = models.CharField(max_length=45)
     especie_id_esp = models.ForeignKey(Especie, models.DO_NOTHING, db_column='Especie_id_Esp')  # Field name made lowercase.
-    cliente_id_rut = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='cliente_id_rut')
+    cliente_id_rut = models.ForeignKey(Cliente, on_delete= models.CASCADE, db_column='cliente_id_rut')
     activo = models.IntegerField(blank=True, null=True)
     def __str__(self):
         return self.nom_pac

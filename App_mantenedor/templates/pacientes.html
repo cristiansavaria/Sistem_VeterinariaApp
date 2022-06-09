@@ -93,7 +93,9 @@
           <td> 
             <a href="{% url 'modificar_paciente' p.id_pac %}" class="btn btn-info m-1">Editar</a>
           </td>
-          <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+          <td> 
+            <a href="{% url 'eliminar_paciente' p.id_pac %}" class="btn btn-danger m-1">Eliminar</a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>

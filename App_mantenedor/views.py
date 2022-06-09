@@ -213,14 +213,23 @@ def contacto_recibido(request):
     return render(request, 'contacto_recibido.html', data)
 
 
-def eliminar(request, id_insumo):
+def eliminar_insumo(request, id_insumo):
     insumoe = get_object_or_404(Insumo, id_insumo=id_insumo)
     insumoe.delete()
     return redirect(to="insumos")
 
 
-def eliminar(request, id_emp):
+def eliminar_empleado(request, id_emp):
     empleado = get_object_or_404(Empleado, id_emp=id_emp)
     empleado.delete()
     return redirect(to="medico")
 
+def eliminar_cliente(request, id_rut):
+    cliente = get_object_or_404(Cliente, id_rut=id_rut)
+    cliente.delete()
+    return redirect(to="clientes")
+
+def eliminar_paciente(request, id_pac):
+    paciente = get_object_or_404(Paciente, id_pac=id_pac)
+    paciente.delete()
+    return redirect(to="pacientes")
