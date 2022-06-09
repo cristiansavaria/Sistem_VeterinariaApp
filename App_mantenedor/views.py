@@ -36,9 +36,10 @@ def clientes(request):
         formulario = ClienteForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-
+            return redirect(to="clientes")
+            
         data["form"] = formulario
-
+        
     return render(request, 'clientes.html', data)
 
 
@@ -60,7 +61,7 @@ def pacientes(request):
         formulario = PacienteForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-
+            return redirect(to="pacientes")
         data["form"] = formulario
 
     return render(request, 'pacientes.html', data)
@@ -84,7 +85,7 @@ def medico(request):
         formulario = MedicoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-
+            return redirect(to="medico")
         data["form"] = formulario
 
     return render(request, 'medico.html', data)
@@ -108,7 +109,7 @@ def insumos(request):
         formulario = InsumoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-
+            return redirect(to="insumos")
         data["form"] = formulario
 
     return render(request, 'insumos.html', data)
@@ -224,10 +225,12 @@ def eliminar_empleado(request, id_emp):
     empleado.delete()
     return redirect(to="medico")
 
+
 def eliminar_cliente(request, id_rut):
     cliente = get_object_or_404(Cliente, id_rut=id_rut)
     cliente.delete()
     return redirect(to="clientes")
+
 
 def eliminar_paciente(request, id_pac):
     paciente = get_object_or_404(Paciente, id_pac=id_pac)
