@@ -1,5 +1,6 @@
 
 from django.http import Http404
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Insumo, Cliente, Paciente, Empleado, AppClienteContacto
@@ -20,7 +21,18 @@ def index(request):
 
 @login_required()
 def clientes(request):
+    busqueda = request.GET.get("buscar")
+    print(busqueda)
     cliente = Cliente.objects.all()
+
+    if busqueda:
+        cliente = Cliente.objects.filter(
+            Q(id_rut__icontains = busqueda) |
+            Q(nom_cli__icontains = busqueda) |
+            Q(ap_cli__icontains = busqueda) 
+    ).distinct()
+    
+
     page = request.GET.get('page', 1)
     try:
         paginator = Paginator(cliente, 7)
@@ -40,12 +52,25 @@ def clientes(request):
 
         data["form"] = formulario
 
-    return render(request, 'clientes.html', data)
+  
+    return render(request, 'clientes.html',data)
 
 
 @login_required()
 def pacientes(request):
+    busqueda = request.GET.get("buscar")
     pacientes = Paciente.objects.all()
+    
+    
+    
+    if busqueda:
+        pacientes = Paciente.objects.filter(
+            Q(nom_pac__icontains = busqueda) |
+            Q(raza__icontains = busqueda)|
+            Q(cliente_id_rut = busqueda)
+
+    ).distinct()
+    
     page = request.GET.get('page', 1)
     try:
         paginator = Paginator(pacientes, 7)
@@ -69,7 +94,16 @@ def pacientes(request):
 
 @login_required()
 def medico(request):
+    busqueda = request.GET.get("buscar")
     medico = Empleado.objects.filter(tipo_empleado_idtip_emp=1)
+
+    if busqueda:
+        medico = Empleado.objects.filter(
+            Q(id_emp__icontains = busqueda)|
+            Q(nom_emp__icontains = busqueda) |
+            Q(ap_emp__icontains= busqueda)
+
+    ).distinct()
     page = request.GET.get('page', 1)
     try:
         paginator = Paginator(medico, 7)
@@ -93,7 +127,16 @@ def medico(request):
 
 @login_required()
 def insumos(request):
+    busqueda = request.GET.get("buscar")
     insumos = Insumo.objects.all()
+
+    
+    if busqueda:
+        insumos = Insumo.objects.filter(
+            Q(nombre__icontains = busqueda) |
+            Q(inventario__icontains = busqueda) 
+    ).distinct()
+
     page = request.GET.get('page', 1)
     try:
         paginator = Paginator(insumos, 7)
