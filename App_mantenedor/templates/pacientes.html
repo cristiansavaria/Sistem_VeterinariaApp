@@ -13,6 +13,22 @@
 
 <div class="container mt-3">
   <h2>Lista Pacientes</h2>
+  
+  {% block buscador %}
+
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+  method="get">
+    <div class="input-group">
+      <input type="text" class="form-control mr-sm-2" placeholder="Buscar..." name="buscar" value="{{ request.GET.buscar }}">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  {% endblock buscador %}
       <!-- Button trigger modal -->
       {% if perms.App_mantenedor.add_paciente %}
       <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal3">
