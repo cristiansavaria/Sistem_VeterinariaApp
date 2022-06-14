@@ -341,7 +341,21 @@ class TipoEmpleado(models.Model):
 
 
 
+class HrsDispo(models.Model):
+    idhrs_dispo = models.AutoField(primary_key=True)
+    fec_disp = models.DateField(blank=True, null=True)
+    hr_disp = models.TimeField(blank=True, null=True)
+    detail = models.CharField(max_length=45, blank=True, null=True)
+    fec_cr = models.DateTimeField(blank=True, null=True)
+    prec = models.IntegerField(blank=True, null=True)
+    servicio = models.CharField(max_length=45, blank=True, null=True)
+    cliente = models.CharField(max_length=10, blank=True, null=True)
+    activo = models.IntegerField(blank=True, null=True)
+    empl = models.CharField(max_length=10, blank=True, null=True)
 
+    class Meta:
+        managed = False
+        db_table = 'hrs_dispo'
 
 
 
