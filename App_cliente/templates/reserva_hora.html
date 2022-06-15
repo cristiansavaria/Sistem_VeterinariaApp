@@ -1,116 +1,98 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %} Reserva horas {% endblock %}
-
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %} Reserva horas {% endblock %} 
 {% block contenido %}
 
+<div>
+  <h2 class="text-center mt-4">Reserva tu Hora</h2>
+</div>
 
 <div>
-    <h2 class="text-center mt-4">Reserva tu Hora</h2>
-</div>
-<div class="seleccion">
-
-    <hr>
-    <div class="dropdown mt-4">
-        <h5>Servicio:</h5>
-
-        <button class="btn btn-secondary dropdown-toggle mt-2" type="button" id="dropdownMenuButton1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Seleccione servicio
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Rayos X </a></li>
-            <li><a class="dropdown-item" href="">Consulta Medica</a></li>
-            <li><a class="dropdown-item" href="#">Peluqueria</a></li>
-            <li><a class="dropdown-item" href="#">Cirugia</a></li>
-            <li><a class="dropdown-item" href="#">Micro Chip</a></li>
-        </ul>
-    </div>
-</div>
-
-
-<div class="mt-5">
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="{% static 'icon/perfil.png' %}" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Doctor@:</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-</div>
-
-
-<table class="table row">
-    <h3>Horas Disponibles</h3>
-    <thead>
+  <table class="table table-striped mt-5">
+    <thead class="table-info">
       <tr>
-        <th scope="col">Fecha</th>
-        <th scope="col">Hora</th>
-        <th scope="col">Servicio</th>
-        
+        <th scope="col">Detalle</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Accion</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th scope="row">xx/xx/xx</th>
-        <td>xx:xx</td>
-        <td>Consulta medica</td>
-        <td><button class="btn btn-warning">Reservar</button></td>
-        
+        <td>
+          <div class="card" style="max-width: 700px">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="https://www.veterinariagam.mx/AtencionVeterinaria_files/stacks-image-f139eb0.jpg" width="200px"/>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Cirujia</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <p class="card-text">
+                    <h6 >26 de junio 12:00hrs</h6>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>$ 45.000</td>
+        <td><button class="btn btn-info">Reservar</button></td>
       </tr>
-      <tr>
-        <th scope="row">xx/xx/xx</th>
-        <td>xx:xx</td>
-        <td>Consulta medica</td>
-        <td><button class="btn btn-warning">Reservar</button></td>
-        
-      </tr>
-      <tr>
-        <th scope="row">xx/xx/xx</th>
-        <td>xx:xx</td>
-        <td>Consulta medica</td>
-        <td><button class="btn btn-warning">Reservar</button></td>
-        
-      </tr>
-      <tr>
-        <th scope="row">xx/xx/xx</th>
-        <td>xx:xx</td>
-        <td>Consulta medica</td>
-        <td><button class="btn btn-warning">Reservar</button></td>
-        
-      </tr>
-      <tr>
-        <th scope="row">xx/xx/xx</th>
-        <td>xx:xx</td>
-        <td>Consulta medica</td>
-        <td><button class="btn btn-warning">Reservar</button></td>
-        
-      </tr>
-      
-     
-      
+      <tr><td>
+        <div class="card" style="max-width: 700px">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6YlupT1Ko6qnzrMIUXnWfXqWmIh_GTLNcag&usqp=CAU" width="200px" />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Rayos x</h5>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <p class="card-text">
+                  <h6 >20 de junio 15:00hrs</h6>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>$ 67.000</td>
+      <td><button class="btn btn-info">Reservar</button></td></tr>
+      <tr><td>
+        <div class="card " style="max-width: 700px">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img  src="https://animalfamilytenerife.com/wp-content/uploads/2021/05/peluqueria-canina.png" width="200px" />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Peluqueria</h5>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <p class="card-text">
+                  <h6 >20 de junio 18:00hrs</h6>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>$ 20.000</td>
+      <td><button class="btn btn-info">Reservar</button></td></tr>
     </tbody>
   </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 {% endblock %}
