@@ -2,7 +2,7 @@ from django import views
 from django.urls import path
 
 
-from .views import clientes, contacto_recibido, eliminar_cliente, eliminar_empleado, eliminar_insumo, eliminar_paciente, index, insumos, login, modificar_cliente, modificar_insumo, modificar_medico, modificar_paciente, modificar_reserva, pacientes, reserva_horas, medico
+from .views import clientes, contacto_recibido, eliminar_cliente, eliminar_empleado, eliminar_insumo, eliminar_paciente, index, insumos, login, modificar_cliente, modificar_insumo, modificar_medico, modificar_paciente, modificar_reserva, pacientes, reserva_horas, medico, horas_disponibles, modificar_hdisponible
 
 urlpatterns = [
     path('index/', index, name='index'),
@@ -11,11 +11,13 @@ urlpatterns = [
     path('medico/', medico, name='medico'),
     path('insumos/', insumos, name='insumos'),
     path('reserva_horas/', reserva_horas, name='reserva_horas'),
+    path('horas_disponibles/', horas_disponibles, name="horas_disponibles"), 
     path('modificar_insumo/<id_insumo>/', modificar_insumo, name="modificar_insumo"), 
     path('modificar_cliente/<id_rut>/', modificar_cliente, name="modificar_cliente"), 
     path('modificar_medico/<id_emp>/', modificar_medico, name="modificar_medico"), 
     path('modificar_paciente/<id_pac>/', modificar_paciente, name="modificar_paciente"), 
     path('modificar_reserva/<id_res>/', modificar_reserva, name="modificar_reserva"), 
+    path('modificar_hdisponible/<idhrs_dispo>/', modificar_hdisponible, name="modificar_hdisponible"), 
     path('contacto_recibido/',contacto_recibido, name='recibidos' ),
     path('login/', login, name='login'),
     path('eliminar-insumo/<id_insumo>/', eliminar_insumo, name="eliminar_insumo"), 

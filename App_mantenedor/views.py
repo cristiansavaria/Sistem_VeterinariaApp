@@ -3,8 +3,8 @@ from django.http import Http404
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Insumo, Cliente, Paciente, Empleado, AppClienteContacto, Reserva
-from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm, ContactoRForm, ReservaForm
+from .models import Insumo, Cliente, Paciente, Empleado, AppClienteContacto, Reserva, HrsDispo
+from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm, ContactoRForm, ReservaForm, HrsDispoForm
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib import messages
@@ -178,6 +178,23 @@ def reserva_horas(request):
 
 
 @login_required()
+def horas_disponibles(request):
+    horasdisponibles = HrsDispo.objects.all()
+
+    data = {
+        'horas_disponibles': horasdisponibles,
+        'form': HrsDispoForm()
+    }
+    if request.method == 'POST':
+        formulario = HrsDispoForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="horas_disponibles")
+        data["form"] = formulario
+
+    return render(request, 'horas_disponibles.html', data)
+
+@login_required()
 def modificar_insumo(request, id_insumo):
 
     insumo = get_object_or_404(Insumo, id_insumo=id_insumo)
@@ -262,6 +279,21 @@ def modificar_reserva(request, id_res):
 
     return render(request, 'modificar_reserva.html', data)
 
+@login_required()
+def modificar_hdisponible(request, idhrs_dispo):
+    horasdisponibles = get_object_or_404(HrsDispo, idhrs_dispo=idhrs_dispo)
+    data = {
+        'form': HrsDispoForm(instance=horasdisponibles)
+    }
+    if request.method == 'POST':
+        formulario = HrsDispoForm(
+            data=request.POST, instance=horasdisponibles, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="horas_disponibles")
+        data["form"] = formulario
+
+    return render(request, 'modificar_hdisponible.html', data)
 
 @login_required()
 def contacto_recibido(request):

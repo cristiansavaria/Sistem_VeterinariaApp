@@ -13,9 +13,102 @@
 
 <div class="container mt-3">
     <h2>Horas Disponibles</h2>
-                
-
-  </div>
+              
   <script src="{% static 'js/calendar.js' %}"></script>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal7">
+        + Agregar Hora
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel7" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel7">Agregar Hora</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form class="insumo row g-3" method="POST">
+                {% csrf_token %}
+
+                <div class="col-12">
+                  <label for="fec_disp" class="form-label">Fecha*</label>
+                  <input type="text" name="fec_disp" class="form-control" id="inputAddress">
+                </div>
+                <div class="col-12">
+                  <label for="hr_disp" class="form-label">Hora*</label>
+                  <input type="text" name="hr_disp" class="form-control" id="inputAddress" >
+                </div>
+                <div class="col-12">
+                  <label for="detail" class="form-label">Detalle</label>
+                  <input type="text" name="detail" class="form-control" id="inputAddress2">
+                </div>
+                <div class="col-12">
+                  <label for="prec" class="form-label">Precio*</label>
+                  <input type="text" name="prec" class="form-control" id="inputAddress" placeholder="ej: huellitas@gmail.com">
+                </div>
+                <div class="col-12">
+                  <label for="servicio" class="form-label">Servicio*</label>
+                  <input type="text" name="servicio" class="form-control" id="inputAddress" placeholder="ej: huellitas@gmail.com">
+                </div>
+                <div class="col-12">
+                  <label for="empl" class="form-label">Medico*</label>
+                  <input type="text" name="empl" class="form-control" id="inputAddress" placeholder="ej: 1(Médico)">
+                </div>
+                <div class="col-12">
+                  <label for="activo" class="form-label">Activo*</label>
+                  <input type="text" name="activo" class="form-control" id="inputAddress" placeholder="ej: 1(Activo), 0(Desactivado)">
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Almacenar</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              
+                </div>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>   
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr class="table-info ">
+        <th>Fecha y Hora</th>
+        <th>Detalle</th>
+        <th>Precio</th>
+        <th>Servicio</th>
+        <th>Doctor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for hd in horas_disponibles %}
+      <tr>
+        <td >{{ hd.fec_disp}} {{hd.hr_disp}}</td>
+        <td>{{ hd.detail }}</td>
+        <td>{{ hd.prec }}</td>
+        <td>{{ hd.servicio }}</td>
+        <td>{{ hd.empl }}</td>
+        
+        <td> 
+          <a href="{% url 'modificar_hdisponible' hd.idhrs_dispo %}"  class="btn btn-info m-1">Editar</a>
+        </td>
+       
+        
+        <td> 
+          <a href="" class="btn btn-danger m-1">Eliminar</a>
+        </td>
+       
+        <td> 
+          <a href="" class="btn btn-warning m-1">Reservar</a>
+        </td>
+        
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
 

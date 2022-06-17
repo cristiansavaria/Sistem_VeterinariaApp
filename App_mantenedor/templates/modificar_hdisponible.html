@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Hora Disponible {% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+        <hr>
+            <!--  editar-->
+            <div class="row" >
+                <div class="col-12 col-md-6 offset-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="modal-title">Editar Hora Disponible</h2>
+                            <hr>
+
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form | crispy }}
+                                <div class="modal-footer">
+                                    <button type="submit" value="Guardar" class="btn btn-primary">Guardar</button>
+                                    <button  type="reset" value="Cancelar" class="btn btn-secondary">Cancelar</button>
+                                    <a href="{% url 'horas_disponibles' %}" class="btn btn-warning"  > Ver Lista</a>
+
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div> 
+            
+{% endblock %}
