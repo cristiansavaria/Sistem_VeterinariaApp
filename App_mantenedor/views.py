@@ -8,6 +8,8 @@ from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm, ContactoRF
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib import messages
+
+
 # Create your views here.
 
 
