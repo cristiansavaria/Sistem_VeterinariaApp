@@ -7,6 +7,7 @@ from .models import Insumo, Cliente, Paciente, Empleado, AppClienteContacto, Res
 from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm, ContactoRForm, ReservaForm
 from django.core.paginator import Paginator
 from django.http import Http404
+from django.contrib import messages
 # Create your views here.
 
 
@@ -188,6 +189,7 @@ def modificar_insumo(request, id_insumo):
             data=request.POST, instance=insumo, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "modificado correctamente")
             return redirect(to="insumos")
         data["form"] = formulario
 
@@ -289,6 +291,7 @@ def contacto_recibido(request):
 def eliminar_insumo(request, id_insumo):
     insumoe = get_object_or_404(Insumo, id_insumo=id_insumo)
     insumoe.delete()
+    messages.success(request, 'eliminado correctamente')
     return redirect(to="insumos")
 
 

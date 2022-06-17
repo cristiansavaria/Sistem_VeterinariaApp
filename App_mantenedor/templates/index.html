@@ -175,9 +175,13 @@
             </ul>
           </div>
         </nav>
-
+        {% if messages %}
+            {% for m in messages %}
+                {{m}}
+            {% endfor %}
+        {% endif %}
         {% block content %}
-        
+       
 
         <div >
           <div class="row gx-5">
