@@ -3,8 +3,8 @@ from django.http import Http404
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Insumo, Cliente, Paciente, Empleado, AppClienteContacto
-from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm, ContactoRForm
+from .models import Insumo, Cliente, Paciente, Empleado, AppClienteContacto, Reserva
+from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm, ContactoRForm, ReservaForm
 from django.core.paginator import Paginator
 from django.http import Http404
 # Create your views here.
@@ -160,7 +160,20 @@ def insumos(request):
 
 @login_required()
 def reserva_horas(request):
-    return render(request, 'reserva_horas.html')
+    reserva = Reserva.objects.all()
+
+    data = {
+        'reserva': reserva,
+        'form': ReservaForm()
+    }
+    if request.method == 'POST':
+        formulario = ReservaForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="reserva_horas")
+        data["form"] = formulario
+
+    return render(request, 'reserva_horas.html', data)
 
 
 @login_required()
@@ -230,6 +243,22 @@ def modificar_paciente(request, id_pac):
         data["form"] = formulario
 
     return render(request, 'modificar_paciente.html', data)
+
+@login_required()
+def modificar_reserva(request, id_res):
+    reserva = get_object_or_404(Reserva, id_res=id_res)
+    data = {
+        'form': ReservaForm(instance=reserva)
+    }
+    if request.method == 'POST':
+        formulario = ReservaForm(
+            data=request.POST, instance=reserva, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="reserva_horas")
+        data["form"] = formulario
+
+    return render(request, 'modificar_reserva.html', data)
 
 
 @login_required()

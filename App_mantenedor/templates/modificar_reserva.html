@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block title %} Medico {% endblock %}
+{% block title %} Reserva {% endblock %}
 
 {% block content %}
 {% load crispy_forms_tags %}
@@ -10,7 +10,7 @@
                 <div class="col-12 col-md-6 offset-md-3">
                     <div class="card">
                         <div class="card-body">
-                            <h2 class="modal-title">Editar Médico</h2>
+                            <h2 class="modal-title">Editar Reserva</h2>
                             <hr>
 
                             <form action="" method="POST" enctype="multipart/form-data">
@@ -19,7 +19,7 @@
                                 <div class="modal-footer">
                                     <button type="submit" value="Guardar" class="btn btn-primary">Guardar</button>
                                     <button  type="reset" value="Cancelar" class="btn btn-secondary">Cancelar</button>
-                                    <a href="{% url 'medico' %}" class="btn btn-warning"  > Ver Lista</a>
+                                    <a href="{% url 'reserva_horas' %}" class="btn btn-warning"  > Ver Lista</a>
 
                                 </div>
                             </form>
