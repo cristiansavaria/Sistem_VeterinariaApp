@@ -39,7 +39,7 @@
     <div class="wrapper">
       <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
-          <a class="sidebar-brand" href="#">
+          <a class="sidebar-brand" href="{% url 'inicio' %}">
             <span class="align-middle">Admin Huellitas</span>
           </a>
 
@@ -92,7 +92,7 @@
 
               </a>
               <ul class="sidebar-nav dropdown-menu">
-                <li><a class=" sidebar-link dropdown-item" href="{% url 'horas_disponibles' %}">Horas Disponibles</a></li>
+                <li><a class=" sidebar-link dropdown-item" href="{% url 'horas_activas' %}">Horas Disponibles</a></li>
                 <li><a class=" sidebar-link dropdown-item" href="{% url 'reserva_horas' %}">Horas Reservadas</a></li>
               </ul>
             </li>

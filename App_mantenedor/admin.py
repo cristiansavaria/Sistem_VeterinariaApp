@@ -1,8 +1,9 @@
 from django.contrib import admin
 
-from App_mantenedor.models import Cliente
+from App_mantenedor.models import Cliente, Reserva
 
 # Register your models here.
 
 
 admin.site.register(Cliente)
+admin.site.register(Reserva)

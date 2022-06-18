@@ -73,42 +73,41 @@
         </div>
       </div>   
 
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr class="table-info ">
-        <th>Fecha y Hora</th>
-        <th>Detalle</th>
-        <th>Precio</th>
-        <th>Servicio</th>
-        <th>Doctor</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for hd in horas_disponibles %}
-      <tr>
-        <td >{{ hd.fec_disp}} {{hd.hr_disp}}</td>
-        <td>{{ hd.detail }}</td>
-        <td>{{ hd.prec }}</td>
-        <td>{{ hd.servicio }}</td>
-        <td>{{ hd.empl }}</td>
-        
-        <td> 
-          <a href="{% url 'modificar_hdisponible' hd.idhrs_dispo %}"  class="btn btn-info m-1">Editar</a>
-        </td>
-       
-        
-        <td> 
-          <a href="" class="btn btn-danger m-1">Eliminar</a>
-        </td>
-       
-        <td> 
-          <a href="" class="btn btn-warning m-1">Reservar</a>
-        </td>
-        
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr class="table-info ">
+            <th>Cliente</th>
+            <th>Fecha y Hora</th>
+            <th>Detalle</th>
+            <th>Precio</th>
+            <th>Servicio</th>
+            <th>Doctor</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in reserva %}
+          <tr>
+            <td >{{ r.cliente_id_rut}}</td>
+            <td>{{ r.fec_res }} {{ r.hora_res }}</td>
+            <td>{{ r.detalle }}</td>
+            <td>{{ r.precio }}</td>
+            <td>{{ r.servicio_id_ser }}</td>
+            <td>{{ r.empleado_id_emp }}</td>
+            
+            <td> 
+              <a href="{% url 'modificar_reserva' r.id_res %}"  class="btn btn-info m-1">Editar</a>
+            </td>
+           
+            
+            <td> 
+              <a href="" class="btn btn-danger m-1">Eliminar</a>
+            </td>
+           
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 </div>
 {% endblock %}
 

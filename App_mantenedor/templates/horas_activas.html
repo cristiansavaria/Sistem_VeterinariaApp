@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Horas Activas {% endblock %}
+
+{% block content %}
+
+
+<h1>
+    Horas Activas
+</h1>
+
+
+
+<div class="container mt-3">
+    <h2>Horas Activas</h2>
+              
+  <script src="{% static 'js/calendar.js' %}"></script>
+
+    
+    
+
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr class="table-info ">
+            <th>Cliente</th>
+            <th>Fecha y Hora</th>
+            <th>Detalle</th>
+            <th>Precio</th>
+            <th>Servicio</th>
+            <th>Doctor</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in activas %}
+          <tr>
+            <td >{{ a.cliente_id_rut}}</td>
+            <td>{{ a.fec_res }} {{ r.hora_res }}</td>
+            <td>{{ a.detalle }}</td>
+            <td>{{ a.precio }}</td>
+            <td>{{ a.servicio_id_ser }}</td>
+            <td>{{ a.empleado_id_emp }}</td>
+            
+           
+           
+           
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}
+

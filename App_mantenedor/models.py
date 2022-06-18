@@ -279,6 +279,8 @@ class Reserva(models.Model):
     activo = models.IntegerField(blank=True, null=True)
     empleado_id_emp = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='empleado_id_emp', blank=True, null=True)
 
+    def __str__(self):
+        return self.activo
     class Meta:
         managed = False
         db_table = 'reserva'

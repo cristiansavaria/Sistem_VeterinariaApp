@@ -163,7 +163,7 @@ def insumos(request):
 
 @login_required()
 def reserva_horas(request):
-    reserva = Reserva.objects.all()
+    reserva = Reserva.objects.all().filter(activo=1)
 
     data = {
         'reserva': reserva,
@@ -177,7 +177,22 @@ def reserva_horas(request):
         data["form"] = formulario
 
     return render(request, 'reserva_horas.html', data)
+@login_required()
+def horas_activas(request):
+    activas = Reserva.objects.all().filter(activo=0)
 
+    data = {
+        'activas': activas,
+        'form': ReservaForm()
+    }
+    if request.method == 'POST':
+        formulario = ReservaForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="horas_activas")
+        data["form"] = formulario
+
+    return render(request, 'horas_activas.html', data)
 
 @login_required()
 def horas_disponibles(request):

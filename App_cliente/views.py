@@ -3,6 +3,8 @@ from .forms import ContactoForm, RegistroUsuario
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import Contacto
+from App_mantenedor.models import Reserva
+
 # Create your views here.
 def base(request):
     return render(request, 'base.html')
@@ -64,3 +66,16 @@ def historial(request):
 
 
 
+def resv_hora(request):
+    disp = Reserva.objects.all().filter(activo=0)
+
+    data = {
+        'disp': disp,
+    }
+    return render(request, 'resv_hora.html', data)
+    
+        
+def imagenRandom(request):
+    imgs = {
+        imagen1 = 
+    }
