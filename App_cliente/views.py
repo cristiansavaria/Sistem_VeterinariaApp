@@ -75,7 +75,3 @@ def resv_hora(request):
     return render(request, 'resv_hora.html', data)
     
         
-def imagenRandom(request):
-    imgs = {
-        imagen1 = 
-    }
