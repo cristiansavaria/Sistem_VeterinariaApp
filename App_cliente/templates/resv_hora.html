@@ -9,7 +9,7 @@
 
 
 
-  <table class="table table-striped mt-5">
+  <table class="table table-striped mt-5 shadow  bg-body rounded">
     <thead class="table-info">
       <tr>
         <th scope="col">Detalle</th>
@@ -41,8 +41,8 @@
             </div>
           </div>
         </td>
-        <td>$ {{ di.precio }}</td>
-        <td><button class="btn btn-info">Reservar Hora</button></td>
+        <td class="align-middle">$ {{ di.precio }}</td>
+        <td class="align-middle"><button class="btn btn-info shadow p-3 mb-5 bg-body rounded ">Reservar Hora</button></td>
       </tr>
       {% endfor %}
     </tbody>
