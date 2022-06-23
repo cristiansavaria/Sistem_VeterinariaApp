@@ -84,6 +84,14 @@
               </a>
             </li>
             {% endif %}
+            {% if perms.App_mantenedor.view_procedimientos %}
+            <li class="sidebar-item mt-2">
+              <a class="sidebar-link" href="{% url 'procedimientos' %}">
+                <i class="align-middle" data-feather="user-plus"></i>
+                <span class="align-middle">Porcedimientos</span>
+              </a>
+            </li>
+            {% endif %}
             {% if perms.App_mantenedor.view_reserva %}
             <li class="sidebar-item mt-2 nav-item dropdown ">
               <a class="sidebar-link nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">

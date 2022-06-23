@@ -1,0 +1,132 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Procedimientos {% endblock %}
+
+{% block content %}
+
+
+<h1>
+    Procedimientos
+</h1>
+
+
+
+<div class="container mt-3">
+  <h2>Lista Procedimientos</h2>
+  
+  {% block buscador %}
+
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+  method="get">
+    <div class="input-group">
+      <input type="text" class="form-control mr-sm-2" placeholder="Buscar..." name="buscar" value="{{ request.GET.buscar }}">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  {% endblock buscador %}
+      <!-- Button trigger modal -->
+      {% if perms.App_mantenedor.add_procedimiento %}
+      <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+      + Ingresar Procedimiento
+    </button>
+    {% endif %}
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel3">Ingresar Procedimiento</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="insumo row g-3" method="POST">
+              {% csrf_token %}
+    
+              
+              <div class="col-12">
+                <label for="nombre" class="form-label">Nombre Paciente*</label>
+                <input type="text" name="nom_pac" class="form-control" id="inputAddress">
+              </div>
+              <div class="col-12">
+                <label for="nombre" class="form-label">Fecha Nacimiento</label>
+                <input type="text" name="fec_nac" class="form-control" id="inputAddress" placeholder="ej: 20/02/22">
+              </div>
+              <div class="col-12">
+                <label for="inventario" class="form-label">Raza*</label>
+                <input type="text" name="raza" class="form-control" id="inputAddress2" placeholder="ej: San Bernardo">
+              </div>
+              <div class="col-12">
+                <label for="nombre" class="form-label"> Color*</label>
+                <input type="text" name="color" class="form-control" id="inputAddress" placeholder="ej: Cafe">
+              </div>
+              <div class="col-12">
+                <label for="nombre" class="form-label">ID Especie*</label>
+                <input type="text" name="especie_id_esp" class="form-control" id="inputAddress" placeholder="ej: 1(Canino), 2(Felino), 3(Ave), 4(Roedor), 5(Anfibio), 6(Reptil)">
+              </div>
+              <div class="col-12">
+                <label for="nombre" class="form-label"> Rut Cliente*</label>
+                <input type="text" name="cliente_id_rut" class="form-control" id="inputAddress" >
+              </div>
+              <div class="col-12">
+                <label for="nombre" class="form-label">Activo*</label>
+                <input type="text" name="activo" class="form-control" id="inputAddress" placeholder="ej: 1(Activo), 0(Desactivado)">
+              </div>
+              
+              <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            
+          </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>           
+                
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>Procedimiento</th>
+          <th>Descripcion</th>
+          <th>Indicacion</th>
+          <th>Fecha Procedimiento</th>
+          <th>Medico Responsable</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pr in entity %}
+        <tr>
+          <td>{{ pr.paciente_id_pac }}</td>
+          <td class="text-center">{{ pr.procedimiento_id_proc }}</td>
+          <td class="text-center">{{ pr.descripcion }}</td>
+          <td class="text-center">{{ pr.indicacion }}</td>
+          <td class="text-center">{{ pr.fec_pro }}</td>
+          <td class="text-center">{{ pr.empleado_id_emp }}</td>
+          {% if perms.App_mantenedor.change_paciente %}
+          <td> 
+            <a href="#" class="btn btn-info m-1">Editar</a>
+          </td>
+          {% endif %}
+          {% if perms.App_mantenedor.delete_paciente %}
+          <td> 
+            <a href="#" class="btn btn-danger m-1">Eliminar</a>
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+    <div>
+      {% include 'paginator.html' %}
+    </div>
+  </div>
+
+{% endblock %}

@@ -2,7 +2,7 @@ from django import views
 from django.urls import path
 
 
-from .views import clientes, contacto_recibido, eliminar_cliente, eliminar_empleado, eliminar_insumo, eliminar_paciente, index, insumos, login, modificar_cliente, modificar_insumo, modificar_medico, modificar_paciente, modificar_reserva, pacientes, reserva_horas, medico, horas_disponibles, modificar_hdisponible, reservar_hdispo
+from .views import clientes, contacto_recibido, eliminar_cliente, procedimientos, eliminar_empleado, eliminar_insumo, eliminar_paciente, index, insumos, login, modificar_cliente, modificar_insumo, modificar_medico, modificar_paciente, modificar_reserva, pacientes, reserva_horas, medico, horas_disponibles, modificar_hdisponible, reservar_hdispo
 
 urlpatterns = [
     path('index/', index, name='index'),
@@ -24,6 +24,7 @@ urlpatterns = [
     path('eliminar-medico/<id_emp>/', eliminar_empleado, name="eliminar_medico"), 
     path('eliminar-cliente/<id_rut>/', eliminar_cliente, name="eliminar_cliente"), 
     path('eliminar-paciente/<id_pac>/', eliminar_paciente, name="eliminar_paciente"),
+    path('procedimientos/', procedimientos, name="procedimientos"),
 
    
    
