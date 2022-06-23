@@ -162,8 +162,9 @@ def insumos(request):
 
 
 @login_required()
-def reserva_horas(request):
+def reserva_horas(request ):
     reserva = Reserva.objects.all()
+
 
     data = {
         'reserva': reserva,
@@ -176,7 +177,7 @@ def reserva_horas(request):
             return redirect(to="reserva_horas")
         data["form"] = formulario
 
-    return render(request, 'reserva_horas.html', data)
+    return render(request, 'reserva_horas.html',data)
 
 
 @login_required()
@@ -345,3 +346,20 @@ def eliminar_paciente(request, id_pac):
     paciente = get_object_or_404(Paciente, id_pac=id_pac)
     paciente.delete()
     return redirect(to="pacientes")
+
+
+@login_required()
+def reservar_hdispo(request):
+    reservar_hdispo = ReservaForm
+    data = {
+        'form': ReservaForm(instance=reservar_hdispo)
+    }
+    if request.method == 'POST':
+        formulario = HrsDispoForm(
+            data=request.POST, instance=reservar_hdispo, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="horas_disponibles")
+        data["form"] = formulario
+
+    return render(request, 'modificar_hdisponible.html', data)
