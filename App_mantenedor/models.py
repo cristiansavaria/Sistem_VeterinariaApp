@@ -244,7 +244,7 @@ class Pago(models.Model):
 
 class ProcedPacien(models.Model):
     idpro_pac = models.AutoField(db_column='idPro_Pac', primary_key=True)  # Field name made lowercase.
-    paciente_id_pac = models.ForeignKey(Paciente, models.DO_NOTHING, db_column='Paciente_id_Pac')  # Field name made lowercase.
+    paciente_id_pac = models.ForeignKey(Paciente,on_delete= models.CASCADE, db_column='Paciente_id_Pac')  # Field name made lowercase.
     procedimiento_id_proc = models.ForeignKey('Procedimiento', models.DO_NOTHING, db_column='Procedimiento_id_Proc')  # Field name made lowercase.
     descripcion = models.CharField(max_length=45)
     indicacion = models.CharField(max_length=45)

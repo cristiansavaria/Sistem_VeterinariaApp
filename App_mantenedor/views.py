@@ -51,6 +51,7 @@ def clientes(request):
         formulario = ClienteForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Cliente Agregado Correctamente")
             return redirect(to="clientes")
 
         data["form"] = formulario
@@ -89,6 +90,7 @@ def pacientes(request):
         formulario = PacienteForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Paciente Agregado Correctamente")
             return redirect(to="pacientes")
         data["form"] = formulario
 
@@ -122,6 +124,7 @@ def medico(request):
         formulario = MedicoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Medico Agregado Correctamente")
             return redirect(to="medico")
         data["form"] = formulario
 
@@ -155,6 +158,7 @@ def insumos(request):
         formulario = InsumoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Insumo Agregado Correctamente")
             return redirect(to="insumos")
         data["form"] = formulario
 
@@ -207,7 +211,7 @@ def modificar_insumo(request, id_insumo):
             data=request.POST, instance=insumo, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
-            messages.success(request, "modificado correctamente")
+            messages.success(request, "Insumo Modificado Correctamente")
             return redirect(to="insumos")
         data["form"] = formulario
 
@@ -225,6 +229,7 @@ def modificar_cliente(request, id_rut):
             data=request.POST, instance=cliente, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Cliente Modificado Correctamente")
             return redirect(to="clientes")
         data["form"] = formulario
 
@@ -242,6 +247,7 @@ def modificar_medico(request, id_emp):
             data=request.POST, instance=medico, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Medico Modificado Correctamente")
             return redirect(to="medico")
         data["form"] = formulario
 
@@ -259,6 +265,7 @@ def modificar_paciente(request, id_pac):
             data=request.POST, instance=paciente, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Paciente Modificado Correctamente")
             return redirect(to="pacientes")
         data["form"] = formulario
 
@@ -275,6 +282,7 @@ def modificar_reserva(request, id_res):
             data=request.POST, instance=reserva, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Reserva Modificada Correctamente")
             return redirect(to="reserva_horas")
         data["form"] = formulario
 
@@ -324,25 +332,28 @@ def contacto_recibido(request):
 def eliminar_insumo(request, id_insumo):
     insumoe = get_object_or_404(Insumo, id_insumo=id_insumo)
     insumoe.delete()
-    messages.success(request, 'eliminado correctamente')
+    messages.success(request, 'Insumo Eliminado Correctamente')
     return redirect(to="insumos")
 
 
 def eliminar_empleado(request, id_emp):
     empleado = get_object_or_404(Empleado, id_emp=id_emp)
     empleado.delete()
+    messages.success(request, 'Empleado Eliminado Correctamente')
     return redirect(to="medico")
 
 
 def eliminar_cliente(request, id_rut):
     cliente = get_object_or_404(Cliente, id_rut=id_rut)
     cliente.delete()
+    messages.success(request, 'Cliente Eliminado Correctamente')
     return redirect(to="clientes")
 
 
 def eliminar_paciente(request, id_pac):
     paciente = get_object_or_404(Paciente, id_pac=id_pac)
     paciente.delete()
+    messages.success(request, 'Paciente Eliminado Correctamente')
     return redirect(to="pacientes")
 
 

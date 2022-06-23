@@ -2,7 +2,26 @@
 {% load static %} 
 {% block title %} Clientes {% endblock %} 
 {% block content %}
-
+{% block js %}
+      <script>
+        function eliminarT(id){
+          Swal.fire({
+            title: 'Estas seguro?',
+            text: "Si eliminas, No podras volver atras!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminar',
+            cancelButtonText: 'No, Cancelar'
+          }).then(function(result) {
+            if(result.isConfirmed){
+                window.location.href = "/eliminar-cliente/"+id+"/"
+            }
+        })
+        }
+      </script>
+      {% endblock %}
 <h1>Clientes</h1>
 
 
@@ -197,7 +216,7 @@ method="get">
         
         <td> 
           {% if perms.App_mantenedor.delete_cliente %}
-              <a href="{% url 'eliminar_cliente' c.id_rut %}" class="btn btn-danger m-1">Eliminar</a>
+              <a href="#" onclick="eliminarT('{{ c.id_rut }}')" class="btn btn-danger m-1">Eliminar</a>
           {% endif %}
         </td>
         

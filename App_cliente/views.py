@@ -3,6 +3,7 @@ from .forms import ContactoForm, RegistroUsuario
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import Contacto
+from django.contrib import messages
 # Create your views here.
 def base(request):
     return render(request, 'base.html')
@@ -24,6 +25,7 @@ def contacto(request):
        
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Formulario Enviado Correctamente")
             #subject=request.POST["tipo_consulta"]
             #message=request.POST["mensaje"] + "--- mi correo es --- " + request.POST["correo"] + " --- mi nombre es ---  " + request.POST["nombre"]
             #email_from=settings.EMAIL_HOST_USER
