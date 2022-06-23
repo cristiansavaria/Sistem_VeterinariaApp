@@ -426,5 +426,5 @@ def procedimientos(request):
     return render(request, 'procedimientos.html', data)
 
 
-def error_404(request):
-    return render(request, 'em404.html')
+def handler404(request, exception):
+    return render(request, 'em404.html', locals())
