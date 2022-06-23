@@ -28,7 +28,9 @@
     </div>
   </form>
 
+  
   {% endblock buscador %}
+  {% load crispy_forms_tags %}
       <!-- Button trigger modal -->
       {% if perms.App_mantenedor.add_paciente %}
       <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal3">
@@ -46,9 +48,9 @@
           <div class="modal-body">
             <form class="insumo row g-3" method="POST">
               {% csrf_token %}
-    
+              {{ form | crispy }}
               
-              <div class="col-12">
+              <!-- <div class="col-12">
                 <label for="nombre" class="form-label">Nombre Paciente*</label>
                 <input type="text" name="nom_pac" class="form-control" id="inputAddress">
               </div>
@@ -75,7 +77,7 @@
               <div class="col-12">
                 <label for="nombre" class="form-label">Activo*</label>
                 <input type="text" name="activo" class="form-control" id="inputAddress" placeholder="ej: 1(Activo), 0(Desactivado)">
-              </div>
+              </div> -->
               
               <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Almacenar</button>
@@ -92,6 +94,7 @@
     <table class="table table-bordered">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Nombre</th>
           <th>Fecha nacimiento</th>
           <th>Raza</th>
@@ -102,6 +105,7 @@
       <tbody>
         {% for p in entity %}
         <tr>
+          <td>{{ p.id_pac }}</td>
           <td>{{ p.nom_pac }}</td>
           <td class="text-center">{{ p.fec_nac }}</td>
           <td class="text-center">{{ p.raza }}</td>

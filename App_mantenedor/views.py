@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Insumo, Cliente, Paciente, Empleado, AppClienteContacto, Reserva, HrsDispo, ProcedPacien
-from .forms import ClienteForm, InsumoForm, MedicoForm, PacienteForm, ContactoRForm, ReservaForm, HrsDispoForm
+from .forms import ClienteForm, InsumoForm, ProcedimientoPForm, MedicoForm, PacienteForm, ContactoRForm, ReservaForm, HrsDispoForm
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib import messages
@@ -297,6 +297,22 @@ def modificar_hdisponible(request, idhrs_dispo):
     return render(request, 'modificar_hdisponible.html', data)
 
 @login_required()
+def modificar_proced(request, idpro_pac):
+    proced = get_object_or_404(ProcedPacien, idpro_pac=idpro_pac)
+    data = {
+        'form': ProcedimientoPForm(instance=proced)
+    }
+    if request.method == 'POST':
+        formulario = ProcedimientoPForm(
+            data=request.POST, instance=proced, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="procedimientos")
+        data["form"] = formulario
+
+    return render(request, 'modificar_proced.html', data)
+
+@login_required()
 def contacto_recibido(request):
     contacto_re = AppClienteContacto.objects.all()
     page = request.GET.get('page', 1)
@@ -364,7 +380,15 @@ def reservar_hdispo(request):
 
 
 def procedimientos(request):
+    busqueda = request.GET.get("buscar")
+    print(busqueda)
     proced = ProcedPacien.objects.all()
+    if busqueda:
+        proced = ProcedPacien.objects.filter(
+            
+            Q(paciente_id_pac = busqueda)
+    ).distinct()
+       
     page = request.GET.get('page', 1)
     try:
         paginator = Paginator(proced, 7)
@@ -373,6 +397,15 @@ def procedimientos(request):
         raise Http404
     data = {
         'entity': proced,
+        'form':ProcedimientoPForm,
         'paginator': paginator
     }
+    if request.method == 'POST':
+        formulario = ProcedimientoPForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="procedimientos")
+
+        data["form"] = formulario
+
     return render(request, 'procedimientos.html', data)
