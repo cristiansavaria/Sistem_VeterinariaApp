@@ -22,4 +22,4 @@ urlpatterns = [
     path('', include('App_mantenedor.urls') ),
     path('accounts/', include('django.contrib.auth.urls') ),
 ]
-handler404 = 'App_mantenedor.views.handler404'
+
