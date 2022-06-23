@@ -1,7 +1,7 @@
 from dataclasses import field
 from pyexpat import model
 from django import forms 
-from .models import AppClienteContacto, Cliente, Empleado, Insumo, Paciente, Reserva, HrsDispo
+from .models import AppClienteContacto, Cliente, Empleado, Insumo, Paciente, Reserva, HrsDispo, ProcedPacien
 
 
 class InsumoForm(forms.ModelForm):
@@ -46,6 +46,10 @@ class HrsDispoForm(forms.ModelForm):
         model = HrsDispo
         fields = '__all__'
 
+class ProcedimientoPForm(forms.ModelForm):
 
+    class Meta:
+        model = ProcedPacien
+        fields = '__all__'
 
 

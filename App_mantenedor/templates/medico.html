@@ -30,7 +30,7 @@
   
   {% endblock buscador %}
 
-
+  {% load crispy_forms_tags %}
       <!-- Button trigger modal -->
       {% if perms.App_mantenedor.add_empleado %}
       <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal5">
@@ -48,8 +48,9 @@
             <div class="modal-body">
               <form class="insumo row g-3" method="POST">
                 {% csrf_token %}
+                {{ form | crispy }}
       
-                
+<!--                 
                 <div class="col-12">
                   <label for="rut" class="form-label">Rut Médico*</label>
                   <input type="text" name="id_emp" class="form-control" id="inputAddress">
@@ -90,7 +91,7 @@
                   <label for="activo" class="form-label">Activo*</label>
                   <input type="text" name="activo" class="form-control" id="inputAddress" placeholder="ej: 1(Activo), 0(Desactivado)">
                 </div>
-                
+                 -->
                 <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Almacenar</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
