@@ -4,7 +4,8 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Insumo, Cliente, Paciente, Empleado, AppClienteContacto, Reserva, HrsDispo, ProcedPacien
-from .forms import ClienteForm, InsumoForm, ProcedimientoPForm, MedicoForm, PacienteForm, ContactoRForm, ReservaForm, HrsDispoForm
+from .forms import ClienteForm, InsumoForm, ProcedimientoPForm, MedicoForm, PacienteForm,\
+ ContactoRForm, ReservaForm, HrsDispoForm
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib import messages
@@ -423,3 +424,7 @@ def procedimientos(request):
         data["form"] = formulario
 
     return render(request, 'procedimientos.html', data)
+
+
+def error_404(request):
+    return render(request, 'em404.html')
