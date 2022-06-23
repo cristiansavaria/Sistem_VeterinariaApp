@@ -164,8 +164,6 @@ def insumos(request):
 @login_required()
 def reserva_horas(request ):
     reserva = Reserva.objects.all()
-
-
     data = {
         'reserva': reserva,
         'form': ReservaForm()
