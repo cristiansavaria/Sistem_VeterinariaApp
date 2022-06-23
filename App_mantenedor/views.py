@@ -176,6 +176,7 @@ def reserva_horas(request ):
         formulario = ReservaForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Reserva Exitosa!")
             return redirect(to="reserva_horas")
         data["form"] = formulario
 
@@ -315,6 +316,7 @@ def modificar_proced(request, idpro_pac):
             data=request.POST, instance=proced, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Procedimiento Editado Correctamente")
             return redirect(to="procedimientos")
         data["form"] = formulario
 
@@ -415,6 +417,7 @@ def procedimientos(request):
         formulario = ProcedimientoPForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Procedimiento Agregado Correctamente")
             return redirect(to="procedimientos")
 
         data["form"] = formulario

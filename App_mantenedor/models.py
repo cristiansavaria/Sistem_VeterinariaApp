@@ -275,9 +275,9 @@ class Reserva(models.Model):
     fec_creacion = models.DateTimeField()
     precio = models.IntegerField(blank=True, null=True)
     servicio_id_ser = models.ForeignKey('Servicio', models.DO_NOTHING, db_column='servicio_id_ser')
-    cliente_id_rut = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='cliente_id_rut', blank=True, null=True)
+    cliente_id_rut = models.ForeignKey(Cliente, on_delete= models.CASCADE, db_column='cliente_id_rut', blank=True, null=True)
     activo = models.IntegerField(blank=True, null=True)
-    empleado_id_emp = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='empleado_id_emp', blank=True, null=True)
+    empleado_id_emp = models.ForeignKey(Empleado,on_delete= models.CASCADE, db_column='empleado_id_emp', blank=True, null=True)
 
     class Meta:
         managed = False
