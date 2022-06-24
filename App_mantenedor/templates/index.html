@@ -48,7 +48,7 @@
 
             <li class="sidebar-item active">
               <a class="sidebar-link" href="{% url 'index' %}">
-                <i class="align-middle" data-feather="sliders"></i>
+                <i class="align-middle" data-feather="home"></i>
                 <span class="align-middle">Home</span>
               </a>
             </li>
@@ -71,7 +71,7 @@
             {% if perms.App_mantenedor.view_paciente %}
             <li class="sidebar-item mt-2">
               <a class="sidebar-link" href="{% url 'pacientes' %}">
-                <i class="align-middle" data-feather="log-in"></i>
+                <i class="align-middle" data-feather="github"></i>
                 <span class="align-middle">Pacientes</span>
               </a>
             </li>
@@ -79,7 +79,7 @@
             {% if perms.App_mantenedor.view_insumo %}
             <li class="sidebar-item mt-2">
               <a class="sidebar-link" href="{% url 'insumos' %}">
-                <i class="align-middle" data-feather="user-plus"></i>
+                <i class="align-middle" data-feather="archive"></i>
                 <span class="align-middle">Insumos</span>
               </a>
             </li>
@@ -87,7 +87,7 @@
             {% if perms.App_mantenedor.view_procedimientos %}
             <li class="sidebar-item mt-2">
               <a class="sidebar-link" href="{% url 'procedimientos' %}">
-                <i class="align-middle" data-feather="user-plus"></i>
+                <i class="align-middle" data-feather="activity"></i>
                 <span class="align-middle">Porcedimientos</span>
               </a>
             </li>
@@ -100,6 +100,7 @@
 
               </a>
               <ul class="sidebar-nav dropdown-menu">
+                
                 <li><a class=" sidebar-link dropdown-item" href="{% url 'horas_disponibles' %}">Horas Disponibles</a></li>
                 <li><a class=" sidebar-link dropdown-item" href="{% url 'reserva_horas'  %}">Horas Reservadas</a></li>
               </ul>
@@ -126,9 +127,9 @@
                   data-bs-toggle="dropdown"
                 >
                   <div class="position-relative">
-                    <a class="sidebar-link" href="{% url 'recibidos' %}"></a>
-                    <i class="align-middle" data-feather="bell"></i>
-                    <span class="indicator">4</span>
+                    <a  href="{% url 'recibidos' %}"><i class="align-middle" data-feather="bell"></i></a>
+                    
+                    <span class="indicator">1</span>
                   </div>
                 </a>
               </li>
@@ -139,9 +140,7 @@
                   id="messagesDropdown"
                   data-bs-toggle="dropdown"
                 >
-                  <div class="position-relative">
-                    <i class="align-middle" data-feather="message-square"></i>
-                  </div>
+                  
                 </a>
                 <div
                   class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
@@ -187,7 +186,11 @@
 
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'logout' %}"
-                    >Cerrar Sesion</a
+                    ><i
+                      class="align-middle me-1"
+                      data-feather="log-out"
+                    ></i>
+                    Cerrar Sesion</a
                   >
                 </div>
                 {% endif %}
@@ -195,20 +198,132 @@
             </ul>
           </div>
         </nav>
-        
+     
         {% block content %}
        
 
-        <div >
-          <div class="row gx-5">
-            <div class="col">
-             <div class="p-3 border bg-light"><canvas id="myChart"></canvas></div>
+        <h1 class="h3 mb-3 mt-3"><strong>Bienvenido al Panel</strong> Administrador Huellitas</h1>
+
+        <div class="row">
+          <div class="col-xl-6 col-xxl-5 d-flex">
+            <div class="w-100">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col mt-0">
+                          <h5 class="card-title">Atencion a Domicilio</h5>
+                        </div>
+
+                        <div class="col-auto">
+                          <div class="stat text-primary">
+                            <i class="align-middle" data-feather="truck"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <h1 class="mt-1 mb-3">267</h1>
+                      <div class="mb-0">
+                        <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 3.65% </span>
+                        <span class="text-muted">Atenciones</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col mt-0">
+                          <h5 class="card-title">Clientes</h5>
+                        </div>
+
+                        <div class="col-auto">
+                          <div class="stat text-primary">
+                            <i class="align-middle" data-feather="users"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <h1 class="mt-1 mb-3">120</h1>
+                      <div class="mb-0">
+                        <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 5.25% </span>
+                        <span class="text-muted">Nuevos clientes</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col mt-0">
+                          <h5 class="card-title">Gastos en Insumos</h5>
+                        </div>
+
+                        <div class="col-auto">
+                          <div class="stat text-primary">
+                            <i class="align-middle" data-feather="dollar-sign"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <h1 class="mt-1 mb-3">$2.000.000</h1>
+                      <div class="mb-0">
+                        <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65% </span>
+                        <span class="text-muted">Menos que el 2021</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col mt-0">
+                          <h5 class="card-title">Emergencias</h5>
+                        </div>
+
+                        <div class="col-auto">
+                          <div class="stat text-primary">
+                            <i class="align-middle" data-feather="activity"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <h1 class="mt-1 mb-3">64</h1>
+                      <div class="mb-0">
+                        <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2.25% </span>
+                        <span class="text-muted">Menos que el 2021</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="col">
-              <div class="p-3 border bg-light"><canvas id="myCharts"></canvas></div>
+          </div>
+
+          <div class="col-xl-6 col-xxl-7">
+            <div class="card flex-fill w-100">
+              <div class="card-header">
+
+                <h5 class="card-title mb-0">Medicina General 2021</h5>
+              </div>
+              <div class="card-body py-3">
+                <div class="chart chart-sm">
+                  <canvas id="chartjs-dashboard-line"></canvas>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div class="col-12 col-lg-6">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Cirujias</h5>
+              <h6 class="card-subtitle text-muted"></h6>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas id="chartjs-bar"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        
           {% endblock %}
         </div>
       </div>
@@ -233,38 +348,7 @@
                     >ir a Web</a
                   >
                 </li>
-                <li class="list-inline-item">
-                  <a
-                    class="text-muted"
-                    href="https://adminkit.io/"
-                    target="_blank"
-                    >Support</a
-                  >
-                </li>
-                <li class="list-inline-item">
-                  <a
-                    class="text-muted"
-                    href="https://adminkit.io/"
-                    target="_blank"
-                    >Help Center</a
-                  >
-                </li>
-                <li class="list-inline-item">
-                  <a
-                    class="text-muted"
-                    href="https://adminkit.io/"
-                    target="_blank"
-                    >Privacy</a
-                  >
-                </li>
-                <li class="list-inline-item">
-                  <a
-                    class="text-muted"
-                    href="https://adminkit.io/"
-                    target="_blank"
-                    >Terms</a
-                  >
-                </li>
+              
               </ul>
             </div>
           </div>
@@ -289,7 +373,230 @@
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
       -->
-      
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
+          var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+          gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+          gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+          // Line chart
+          new Chart(document.getElementById("chartjs-dashboard-line"), {
+            type: "line",
+            data: {
+              labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+              datasets: [{
+                label: "Sales ($)",
+                fill: true,
+                backgroundColor: gradient,
+                borderColor: window.theme.primary,
+                data: [
+                  2115,
+                  1562,
+                  1584,
+                  1892,
+                  1587,
+                  1923,
+                  2566,
+                  2448,
+                  2805,
+                  3438,
+                  2917,
+                  3327
+                ]
+              }]
+            },
+            options: {
+              maintainAspectRatio: false,
+              legend: {
+                display: false
+              },
+              tooltips: {
+                intersect: false
+              },
+              hover: {
+                intersect: true
+              },
+              plugins: {
+                filler: {
+                  propagate: false
+                }
+              },
+              scales: {
+                xAxes: [{
+                  reverse: true,
+                  gridLines: {
+                    color: "rgba(0,0,0,0.0)"
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    stepSize: 1000
+                  },
+                  display: true,
+                  borderDash: [3, 3],
+                  gridLines: {
+                    color: "rgba(0,0,0,0.0)"
+                  }
+                }]
+              }
+            }
+          });
+        });
+      </script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Pie chart
+          new Chart(document.getElementById("chartjs-dashboard-pie"), {
+            type: "pie",
+            data: {
+              labels: ["Chrome", "Firefox", "IE"],
+              datasets: [{
+                data: [4306, 3801, 1689],
+                backgroundColor: [
+                  window.theme.primary,
+                  window.theme.warning,
+                  window.theme.danger
+                ],
+                borderWidth: 5
+              }]
+            },
+            options: {
+              responsive: !window.MSInputMethodContext,
+              maintainAspectRatio: false,
+              legend: {
+                display: false
+              },
+              cutoutPercentage: 75
+            }
+          });
+        });
+      </script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Bar chart
+          new Chart(document.getElementById("chartjs-dashboard-bar"), {
+            type: "bar",
+            data: {
+              labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+              datasets: [{
+                label: "This year",
+                backgroundColor: window.theme.primary,
+                borderColor: window.theme.primary,
+                hoverBackgroundColor: window.theme.primary,
+                hoverBorderColor: window.theme.primary,
+                data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+                barPercentage: .75,
+                categoryPercentage: .5
+              }]
+            },
+            options: {
+              maintainAspectRatio: false,
+              legend: {
+                display: false
+              },
+              scales: {
+                yAxes: [{
+                  gridLines: {
+                    display: false
+                  },
+                  stacked: false,
+                  ticks: {
+                    stepSize: 20
+                  }
+                }],
+                xAxes: [{
+                  stacked: false,
+                  gridLines: {
+                    color: "transparent"
+                  }
+                }]
+              }
+            }
+          });
+        });
+      </script>
+     
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Bar chart
+        new Chart(document.getElementById("chartjs-bar"), {
+          type: "bar",
+          data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+              label: "Last year",
+              backgroundColor: window.theme.primary,
+              borderColor: window.theme.primary,
+              hoverBackgroundColor: window.theme.primary,
+              hoverBorderColor: window.theme.primary,
+              data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+              barPercentage: .75,
+              categoryPercentage: .5
+            }, {
+              label: "This year",
+              backgroundColor: "#dee2e6",
+              borderColor: "#dee2e6",
+              hoverBackgroundColor: "#dee2e6",
+              hoverBorderColor: "#dee2e6",
+              data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
+              barPercentage: .75,
+              categoryPercentage: .5
+            }]
+          },
+          options: {
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+            scales: {
+              yAxes: [{
+                gridLines: {
+                  display: false
+                },
+                stacked: false,
+                ticks: {
+                  stepSize: 20
+                }
+              }],
+              xAxes: [{
+                stacked: false,
+                gridLines: {
+                  color: "transparent"
+                }
+              }]
+            }
+          }
+        });
+      });
+    </script> 
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Pie chart
+        new Chart(document.getElementById("chartjs-pie"), {
+          type: "pie",
+          data: {
+            labels: ["Social", "Search Engines", "Direct", "Other"],
+            datasets: [{
+              data: [260, 125, 54, 146],
+              backgroundColor: [
+                window.theme.primary,
+                window.theme.warning,
+                window.theme.danger,
+                "#dee2e6"
+              ],
+              borderColor: "transparent"
+            }]
+          },
+          options: {
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            }
+          }
+        });
+      });
+    </script>
+    <script src="{% static 'js/app.js' %}"></script>
       <script src="{% static 'js/grafico.js' %}"></script>
       <script src="{% static 'js/e404.js' %}"></script>
       <script src="sweetalert2/dist/sweetalert2.min.js"></script>
