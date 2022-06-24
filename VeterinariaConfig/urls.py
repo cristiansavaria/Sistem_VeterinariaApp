@@ -23,3 +23,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls') ),
 ]
 
+handler404 = 'App_mantenedor.views.custom_page_not_found_view'
+handler500 = 'App_mantenedor.views.custom_error_view'
+handler403 = 'App_mantenedor.views.custom_permission_denied_view'
+handler400 = 'App_mantenedor.views.custom_bad_request_view'
