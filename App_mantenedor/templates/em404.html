@@ -1,20 +1,68 @@
-{% extends 'index.html' %}
-{% load static %}
-
-{% block title %} Error 404 {% endblock %}
-
-{% block content %}
-
-<div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Error 404</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/css/404.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="moon"></div>
+    <div class="moon__crater moon__crater1"></div>
+    <div class="moon__crater moon__crater2"></div>
+    <div class="moon__crater moon__crater3"></div>
     
-    <h1 class="text-center mt-3">
-    OoPS!
-    </h1>
-    <h2 class="text-center">La pagina que intentas ingresar, no Existe!</h2>
-    <img src="https://cdni.iconscout.com/illustration/premium/thumb/404-error-4550307-3779211.png" width="100%">
-</div>
-
-
-  
-{% endblock %}
+    <div class="star star1"></div>
+    <div class="star star2"></div>
+    <div class="star star3"></div>
+    <div class="star star4"></div>
+    <div class="star star5"></div>
+    
+    <div class="error">
+      <div class="error__title">404</div>
+      <div class="error__subtitle">OoPs...</div>
+      <div class="error__description">Ingresaste al lugar equivocado!!!</div>
+      <button class="error__button error__button--active">Volver</button>
+    
+    </div>
+    
+    <div class="astronaut">
+      <div class="astronaut__backpack"></div>
+      <div class="astronaut__body"></div>
+      <div class="astronaut__body__chest"></div>
+      <div class="astronaut__arm-left1"></div>
+      <div class="astronaut__arm-left2"></div>
+      <div class="astronaut__arm-right1"></div>
+      <div class="astronaut__arm-right2"></div>
+      <div class="astronaut__arm-thumb-left"></div>
+      <div class="astronaut__arm-thumb-right"></div>
+      <div class="astronaut__leg-left"></div>
+      <div class="astronaut__leg-right"></div>
+      <div class="astronaut__foot-left"></div>
+      <div class="astronaut__foot-right"></div>
+      <div class="astronaut__wrist-left"></div>
+      <div class="astronaut__wrist-right"></div>
+      
+      <div class="astronaut__cord">
+        <canvas id="cord" height="500px" width="500px"></canvas>
+      </div>
+      
+      <div class="astronaut__head">
+        <canvas id="visor" width="60px" height="60px"></canvas>
+        <div class="astronaut__head-visor-flare1"></div>
+        <div class="astronaut__head-visor-flare2"></div>
+      </div>
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="../static/js/error.js"></script>
+</body>
+</html>
 
