@@ -1,8 +1,8 @@
 from dataclasses import field
 from pyexpat import model
 from django import forms 
-from .models import AppClienteContacto, Cliente, Empleado, Insumo, Paciente, Reserva, HrsDispo, ProcedPacien
-
+from .models import AppClienteContacto, Cliente, Empleado, Insumo, Paciente, Reserva,  HrsDispo, ProcedPacien
+import datetime
 
 class InsumoForm(forms.ModelForm):
 
@@ -12,10 +12,13 @@ class InsumoForm(forms.ModelForm):
 
 
 class PacienteForm(forms.ModelForm):
-     
+     fecha_actual = datetime.datetime.today().year
+     rango_anio = tuple([i for i in range(fecha_actual - 15, fecha_actual + 1)])
+     fec_nac = forms.DateField(widget=forms.SelectDateWidget(years=rango_anio))
      class Meta:
          model = Paciente
          fields = '__all__'
+        
 
 class ClienteForm(forms.ModelForm):
 
@@ -35,6 +38,9 @@ class ContactoRForm(forms.ModelForm):
         fields = '__all__'
 
 class ReservaForm(forms.ModelForm):
+    fecha_actual = datetime.datetime.today().year
+    rango_anio = tuple([i for i in range(fecha_actual - 0, fecha_actual + 1)])
+    fec_res = forms.DateField(widget=forms.SelectDateWidget(years=rango_anio))
     class Meta:
         model = Reserva
         fields = '__all__'

@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from App_mantenedor.models import HrsDispo, Reserva
 from .forms import ContactoForm, RegistroUsuario
 from django.core.mail import send_mail
 from django.conf import settings
@@ -66,3 +68,12 @@ def historial(request):
 
 
 
+def resv_hora(request):
+    disp = HrsDispo.objects.all().filter(activo=1)
+
+    data = {
+        'disp': disp,
+    }
+    return render(request, 'resv_hora.html', data)
+    
+        

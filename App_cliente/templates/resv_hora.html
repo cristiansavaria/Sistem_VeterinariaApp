@@ -1,0 +1,53 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %} Reserva horas {% endblock %} 
+{% block contenido %}
+
+<div>
+  <h2 class="text-center mt-4">Reserva tu Hora</h2>
+</div>
+
+
+
+  <table class="table table-striped mt-5 shadow  bg-body rounded">
+    <thead class="table-info">
+      <tr>
+        <th class="text-center" scope="col">Detalle</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for di in disp %}
+      <tr>
+        <td>
+          <div class="card" style="max-width: 700px">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrniw_MGkQk8SGMURqD1SdXCvOlklMseSBow&usqp=CAU" width="200px"/>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title">{{ di.servicio }}</h3>
+                  <h6 class="card-title">{{ di.empl }}</h6>
+                  <p class="card-text">
+                    {{ di.detail }}
+                  </p>
+                  <p class="card-text">
+                    <h6 >{{ di.fec_disp }} {{ di.hr_disp }}</h6>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td class="align-middle">$ {{ di.prec }}</td>
+        <td class="align-middle"><button class="btn btn-info shadow p-3  bg-body rounded ">Reservar Hora</button></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
+
