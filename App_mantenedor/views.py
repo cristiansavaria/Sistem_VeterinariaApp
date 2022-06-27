@@ -377,20 +377,22 @@ def eliminar_paciente(request, id_pac):
 
 
 @login_required()
-def reservar_hdispo(request):
-    reservar_hdispo = ReservaForm
+def reservar_hdispo(request, idhrs_dispo):
+    horasdisponibles = get_object_or_404(HrsDispo, idhrs_dispo=idhrs_dispo)
+    reserva = Reserva.objects.all()
     data = {
-        'form': ReservaForm(instance=reservar_hdispo)
+        'reserva': reserva,
+        'form': ReservaForm(instance=horasdisponibles)
     }
     if request.method == 'POST':
-        formulario = HrsDispoForm(
-            data=request.POST, instance=reservar_hdispo, files=request.FILES)
+        formulario = ReservaForm(
+            data=request.POST, instance=horasdisponibles, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
-            return redirect(to="horas_disponibles")
+            return redirect(to="reserva_horas")
         data["form"] = formulario
 
-    return render(request, 'modificar_hdisponible.html', data)
+    return render(request, 'reservar.html', data)
 
 
 def procedimientos(request):

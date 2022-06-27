@@ -29,6 +29,7 @@ urlpatterns = [
     path('eliminar-cliente/<id_rut>/', eliminar_cliente, name="eliminar_cliente"), 
     path('eliminar-paciente/<id_pac>/', eliminar_paciente, name="eliminar_paciente"),
     path('procedimientos/', procedimientos, name="procedimientos"),
+    path('reservar/<idhrs_dispo>/', reservar_hdispo, name='reservar'),
     
 
    

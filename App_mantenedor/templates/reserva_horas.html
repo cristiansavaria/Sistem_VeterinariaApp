@@ -21,7 +21,7 @@
   <script src="{% static 'js/calendar.js' %}"></script>
 
 
-<!-- <table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped">
     <thead>
       <tr class="table-info ">
         <th>Cliente</th>
@@ -35,8 +35,8 @@
     <tbody>
       {% for r in reserva %}
       <tr>
-        <td >{{ r.cliente_id_rut}}</td>
-        <td>{{ r.fec_res }} {{ r.hora_res }}</td>
+        <td >{{ r.rut_client}}</td>
+        <td>{{ r.fecha }} {{ r.hora }}</td>
         <td>{{ r.detalle }}</td>
         <td>{{ r.precio }}</td>
         <td>{{ r.servicio_id_ser }}</td>
@@ -55,31 +55,6 @@
       </tr>
       {% endfor %}
     </tbody>
-  </table>--> 
-    {% load crispy_forms_tags %}
-          <hr>
-              <!--  editar-->
-              <div class="row" >
-                  <div class="col-12 col-md-6 offset-md-3">
-                      <div class="card">
-                          <div class="card-body">
-                              <h2 class="modal-title">Editar</h2>
-                              <hr>
-
-                              <form action="" method="POST" enctype="multipart/form-data">
-                                  {% csrf_token %}
-                                  {{ form | crispy }}
-                                  <div class="modal-footer">
-                                      <button type="submit" value="Guardar" class="btn btn-primary">Guardar</button>
-                                      <button  type="reset" value="Cancelar" class="btn btn-secondary">Cancelar</button>
-                                      <a href="{% url 'horas_disponibles' %}" class="btn btn-warning"  > Ver Lista</a>
-
-                                  </div>
-                              </form>
-                          </div>
-
-                      </div>
-                  </div>
-              </div> 
+  </table> 
 {% endblock %}
 

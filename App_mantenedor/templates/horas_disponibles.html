@@ -15,6 +15,7 @@
     <h2>Horas Disponibles</h2>
               
   <script src="{% static 'js/calendar.js' %}"></script>
+  {% load crispy_forms_tags %}
 
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary float-end mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal7">
@@ -30,9 +31,10 @@
             </div>
             <div class="modal-body">
               <form class="insumo row g-3" method="POST">
-                {% csrf_token %}
+                {% csrf_token %}  
+                {{ form | crispy }}
 
-                <div class="col-12">
+                <!-- <div class="col-12">
                   <label for="fec_disp" class="form-label">Fecha*</label>
                   <input type="text" name="fec_disp" class="form-control" id="inputAddress">
                 </div>
@@ -59,7 +61,7 @@
                 <div class="col-12">
                   <label for="activo" class="form-label">Activo*</label>
                   <input type="text" name="activo" class="form-control" id="inputAddress" placeholder="">
-                </div>
+                </div> -->
                 
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-primary">Almacenar</button>
@@ -86,11 +88,11 @@
     <tbody>
       {% for hd in horas_disponibles %}
       <tr>
-        <td >{{ hd.fec_disp}} {{hd.hr_disp}}</td>
-        <td>{{ hd.detail }}</td>
-        <td>{{ hd.prec }}</td>
-        <td>{{ hd.servicio }}</td>
-        <td>{{ hd.empl }}</td>
+        <td >{{ hd.fecha}} {{hd.hora}}</td>
+        <td>{{ hd.detalle }}</td>
+        <td>{{ hd.pecio }}</td>
+        <td>{{ hd.servicio_id_ser }}</td>
+        <td>{{ hd.empleado_id_emp }}</td>
         
         <td> 
           <a href="{% url 'modificar_hdisponible' hd.idhrs_dispo %}"  class="btn btn-info m-1">Editar</a>
@@ -102,7 +104,7 @@
         </td>
        
         <td> 
-          <a href="{% url 'reserva_horas' %}" class=" btn btn-warning m-1">Reservar</a>
+          <a href="{% url 'reservar' hd.idhrs_dispo %}" class=" btn btn-warning m-1">Reservar</a>
         </td>
         
       </tr>

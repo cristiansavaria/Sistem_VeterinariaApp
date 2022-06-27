@@ -40,7 +40,7 @@ class ContactoRForm(forms.ModelForm):
 class ReservaForm(forms.ModelForm):
     fecha_actual = datetime.datetime.today().year
     rango_anio = tuple([i for i in range(fecha_actual - 0, fecha_actual + 1)])
-    fec_res = forms.DateField(widget=forms.SelectDateWidget(years=rango_anio))
+   
     class Meta:
         model = Reserva
         fields = '__all__'
