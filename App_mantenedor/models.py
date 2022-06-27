@@ -334,7 +334,7 @@ class HrsDispo(models.Model):
     detalle = models.CharField(max_length=45, blank=True, null=True)
     fec_creacion = models.DateTimeField(blank=True, null=True)
     precio = models.IntegerField(blank=True, null=True)
-    activo = models.IntegerField(blank=True, null=True)
+    activo = models.IntegerField(blank=True, null=True, default = 1)
     servicio_id_ser = models.ForeignKey('Servicio', models.DO_NOTHING, db_column='servicio_id_ser')
     empleado_id_emp = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='empleado_id_emp', blank=True, null=True)
 
