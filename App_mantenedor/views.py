@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Insumo, Cliente, Paciente, Empleado, AppClienteContacto, Reserva, HrsDispo, ProcedPacien
 from .forms import ClienteForm, InsumoForm, ProcedimientoPForm, MedicoForm, PacienteForm,\
- ContactoRForm, ReservaForm, HrsDispoForm
+    ContactoRForm, ReservaForm, HrsDispoForm
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib import messages
@@ -31,11 +31,10 @@ def clientes(request):
 
     if busqueda:
         cliente = Cliente.objects.filter(
-            Q(id_rut__icontains = busqueda) |
-            Q(nom_cli__icontains = busqueda) |
-            Q(ap_cli__icontains = busqueda) 
-    ).distinct()
-    
+            Q(id_rut__icontains=busqueda) |
+            Q(nom_cli__icontains=busqueda) |
+            Q(ap_cli__icontains=busqueda)
+        ).distinct()
 
     page = request.GET.get('page', 1)
     try:
@@ -57,25 +56,22 @@ def clientes(request):
 
         data["form"] = formulario
 
-  
-    return render(request, 'clientes.html',data)
+    return render(request, 'clientes.html', data)
 
 
 @login_required()
 def pacientes(request):
     busqueda = request.GET.get("buscar")
     pacientes = Paciente.objects.all()
-    
-    
-    
+
     if busqueda:
         pacientes = Paciente.objects.filter(
-            Q(nom_pac__icontains = busqueda) |
-            Q(raza__icontains = busqueda)|
-            Q(cliente_id_rut = busqueda)
+            Q(nom_pac__icontains=busqueda) |
+            Q(raza__icontains=busqueda) |
+            Q(cliente_id_rut=busqueda)
 
-    ).distinct()
-    
+        ).distinct()
+
     page = request.GET.get('page', 1)
     try:
         paginator = Paginator(pacientes, 7)
@@ -105,11 +101,11 @@ def medico(request):
 
     if busqueda:
         medico = Empleado.objects.filter(
-            Q(id_emp__icontains = busqueda)|
-            Q(nom_emp__icontains = busqueda) |
-            Q(ap_emp__icontains= busqueda)
+            Q(id_emp__icontains=busqueda) |
+            Q(nom_emp__icontains=busqueda) |
+            Q(ap_emp__icontains=busqueda)
 
-    ).distinct()
+        ).distinct()
     page = request.GET.get('page', 1)
     try:
         paginator = Paginator(medico, 7)
@@ -137,12 +133,11 @@ def insumos(request):
     busqueda = request.GET.get("buscar")
     insumos = Insumo.objects.all()
 
-    
     if busqueda:
         insumos = Insumo.objects.filter(
-            Q(nombre__icontains = busqueda) |
-            Q(inventario__icontains = busqueda) 
-    ).distinct()
+            Q(nombre__icontains=busqueda) |
+            Q(inventario__icontains=busqueda)
+        ).distinct()
 
     page = request.GET.get('page', 1)
     try:
@@ -167,7 +162,7 @@ def insumos(request):
 
 
 @login_required()
-def reserva_horas(request ):
+def reserva_horas(request):
     reserva = Reserva.objects.all()
     data = {
         'reserva': reserva,
@@ -181,7 +176,7 @@ def reserva_horas(request ):
             return redirect(to="reserva_horas")
         data["form"] = formulario
 
-    return render(request, 'reserva_horas.html',data)
+    return render(request, 'reserva_horas.html', data)
 
 
 @login_required()
@@ -200,6 +195,7 @@ def horas_disponibles(request):
         data["form"] = formulario
 
     return render(request, 'horas_disponibles.html', data)
+
 
 @login_required()
 def modificar_insumo(request, id_insumo):
@@ -273,6 +269,7 @@ def modificar_paciente(request, id_pac):
 
     return render(request, 'modificar_paciente.html', data)
 
+
 @login_required()
 def modificar_reserva(request, id_res):
     reserva = get_object_or_404(Reserva, id_res=id_res)
@@ -290,6 +287,7 @@ def modificar_reserva(request, id_res):
 
     return render(request, 'modificar_reserva.html', data)
 
+
 @login_required()
 def modificar_hdisponible(request, idhrs_dispo):
     horasdisponibles = get_object_or_404(HrsDispo, idhrs_dispo=idhrs_dispo)
@@ -305,6 +303,7 @@ def modificar_hdisponible(request, idhrs_dispo):
         data["form"] = formulario
 
     return render(request, 'modificar_hdisponible.html', data)
+
 
 @login_required()
 def modificar_proced(request, idpro_pac):
@@ -322,6 +321,7 @@ def modificar_proced(request, idpro_pac):
         data["form"] = formulario
 
     return render(request, 'modificar_proced.html', data)
+
 
 @login_required()
 def contacto_recibido(request):
@@ -399,10 +399,10 @@ def procedimientos(request):
     proced = ProcedPacien.objects.all()
     if busqueda:
         proced = ProcedPacien.objects.filter(
-            
-            Q(paciente_id_pac = busqueda)
-    ).distinct()
-       
+
+            Q(paciente_id_pac=busqueda)
+        ).distinct()
+
     page = request.GET.get('page', 1)
     try:
         paginator = Paginator(proced, 7)
@@ -411,7 +411,7 @@ def procedimientos(request):
         raise Http404
     data = {
         'entity': proced,
-        'form':ProcedimientoPForm,
+        'form': ProcedimientoPForm,
         'paginator': paginator
     }
     if request.method == 'POST':
@@ -425,14 +425,20 @@ def procedimientos(request):
 
     return render(request, 'procedimientos.html', data)
 
+
 def custom_page_not_found_view(request, exception):
     return render(request, "em404.html", {})
+
 
 def custom_error_view(request, exception=None):
     return render(request, "errors/500.html", {})
 
+
 def custom_permission_denied_view(request, exception=None):
     return render(request, "errors/403.html", {})
 
+
 def custom_bad_request_view(request, exception=None):
     return render(request, "errors/400.html", {})
+
+

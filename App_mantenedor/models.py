@@ -267,21 +267,7 @@ class Procedimiento(models.Model):
         db_table = 'procedimiento'
 
 
-class Reserva(models.Model):
-    id_res = models.AutoField(db_column='id_Res', primary_key=True)  # Field name made lowercase.
-    fec_res = models.DateField()
-    hora_res = models.TimeField()
-    detalle = models.CharField(max_length=45)
-    fec_creacion = models.DateTimeField()
-    precio = models.IntegerField(blank=True, null=True)
-    servicio_id_ser = models.ForeignKey('Servicio', models.DO_NOTHING, db_column='servicio_id_ser')
-    cliente_id_rut = models.ForeignKey(Cliente, on_delete= models.CASCADE, db_column='cliente_id_rut', blank=True, null=True)
-    activo = models.IntegerField(blank=True, null=True)
-    empleado_id_emp = models.ForeignKey(Empleado,on_delete= models.CASCADE, db_column='empleado_id_emp', blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'reserva'
 
 
 class Servicio(models.Model):
@@ -343,15 +329,14 @@ class TipoEmpleado(models.Model):
 
 class HrsDispo(models.Model):
     idhrs_dispo = models.AutoField(primary_key=True)
-    fec_disp = models.DateField(blank=True, null=True)
-    hr_disp = models.TimeField(blank=True, null=True)
-    detail = models.CharField(max_length=45, blank=True, null=True)
-    fec_cr = models.DateTimeField(blank=True, null=True)
-    prec = models.IntegerField(blank=True, null=True)
-    servicio = models.CharField(max_length=45, blank=True, null=True)
-    cliente = models.CharField(max_length=10, blank=True, null=True)
+    fecha = models.DateField(blank=True, null=True)
+    hora = models.TimeField(blank=True, null=True)
+    detalle = models.CharField(max_length=45, blank=True, null=True)
+    fec_creacion = models.DateTimeField(blank=True, null=True)
+    precio = models.IntegerField(blank=True, null=True)
     activo = models.IntegerField(blank=True, null=True)
-    empl = models.CharField(max_length=10, blank=True, null=True)
+    servicio_id_ser = models.ForeignKey('Servicio', models.DO_NOTHING, db_column='servicio_id_ser')
+    empleado_id_emp = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='empleado_id_emp', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -359,13 +344,23 @@ class HrsDispo(models.Model):
 
 
 
+    
+class Reserva(models.Model):
+    id_res = models.AutoField(db_column='id_Res', primary_key=True)  # Field name made lowercase.
+    fecha = models.DateField()
+    hora = models.TimeField()
+    detalle = models.CharField(max_length=45)
+    fec_creacion = models.DateTimeField()
+    precio = models.IntegerField(blank=True, null=True)
+    servicio_id_ser = models.ForeignKey('Servicio', models.DO_NOTHING, db_column='servicio_id_ser')
+    activo = models.IntegerField(blank=True, null=True)
+    empleado_id_emp = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='empleado_id_emp', blank=True, null=True)
+    rut_client = models.CharField(max_length=45, blank=True, null=True)
+    nom_cli = models.CharField(max_length=45, blank=True, null=True)
 
-
-
-
-
-
-
+    class Meta:
+        managed = False
+        db_table = 'reserva'
 
 
 
