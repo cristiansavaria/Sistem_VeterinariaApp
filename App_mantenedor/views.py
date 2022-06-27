@@ -386,9 +386,10 @@ def reservar_hdispo(request, idhrs_dispo):
     }
     if request.method == 'POST':
         formulario = ReservaForm(
-            data=request.POST, instance=horasdisponibles, files=request.FILES)
+            data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            horasdisponibles.delete()
             return redirect(to="reserva_horas")
         data["form"] = formulario
 
