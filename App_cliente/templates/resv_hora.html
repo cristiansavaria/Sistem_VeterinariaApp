@@ -22,27 +22,29 @@
       <tr>
         <td>
           <div class="card" style="max-width: 700px">
+            
             <div class="row no-gutters">
-              <div class="col-md-4">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrniw_MGkQk8SGMURqD1SdXCvOlklMseSBow&usqp=CAU" width="200px"/>
-              </div>
+             
+              <img class="align-self-center mr-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrniw_MGkQk8SGMURqD1SdXCvOlklMseSBow&usqp=CAU" width="140px"/>
+                
               <div class="col-md-8">
                 <div class="card-body">
-                  <h3 class="card-title">{{ di.servicio }}</h3>
-                  <h6 class="card-title">{{ di.empl }}</h6>
+                  <h6 class="card-title">Especialista: {{ di.empleado_id_emp | capfirst }}</h6>
+                  <h6 class="card-title">Servicio: {{ di.servicio_id_ser | capfirst }}</h6>
+                  
                   <p class="card-text">
-                    {{ di.detail }}
+                    {{ di.detalle | capfirst }}
                   </p>
                   <p class="card-text">
-                    <h6 >{{ di.fec_disp }} {{ di.hr_disp }}</h6>
+                    <h6 >{{ di.fecha }} {{ di.hora }}</h6>
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </td>
-        <td class="align-middle">$ {{ di.prec }}</td>
-        <td class="align-middle"><button class="btn btn-info shadow p-3  bg-body rounded ">Reservar Hora</button></td>
+        <td class="align-middle">$ {{ di.precio }}</td>
+        <td class="align-middle"><button class="btn btn-info shadow p-2  bg-body rounded ">Reservar Hora</button></td>
       </tr>
       {% endfor %}
     </tbody>
@@ -50,4 +52,5 @@
 </div>
 
 {% endblock %}
+              
 
