@@ -1,18 +1,18 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block title %} Reserva Horas {% endblock %}
+{% block title %} Detalle Reserva {% endblock %}
 
 {% block content %}
 
 
 <h1>
-    Reserva Horas
+    Detalle Reserva
 </h1>
 
 
 
 <div class="container mt-3">
-    <h2>Horas Reservadas</h2>
+    <h2>Detalle Reserva</h2>
 
 
                 
@@ -34,9 +34,9 @@
                                   {% csrf_token %}
                                   {{ form | crispy }}
                                   <div class="modal-footer">
-                                      <button type="submit" value="Guardar" class="btn btn-primary">Guardar</button>
-                                      <button  type="reset" value="Cancelar" class="btn btn-secondary">Cancelar</button>
-                                      <a href="{% url 'reserva_horas' %}" class="btn btn-warning"  > Ver Lista</a>
+                                      <button type="submit" value="Guardar" class="btn btn-primary">Reservar</button>
+                                      <button  type="reset" value="Cancelar" class="btn btn-secondary">Cancelar Cambios</button>
+                                      <a href="{% url 'reserva_horas' %}" class="btn btn-warning"  > Volver</a>
 
                                   </div>
                               </form>

@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
+from App_mantenedor.forms import ReservaForm
 from App_mantenedor.models import HrsDispo, Reserva
 from .forms import ContactoForm, RegistroUsuario
 from django.core.mail import send_mail
@@ -6,7 +7,7 @@ from django.conf import settings
 from .models import Contacto
 from django.contrib import messages
 # Create your views here.
-
+from App_mantenedor.views import  reservar_hdispo
 
 def base(request):
     return render(request, 'base.html')
@@ -80,3 +81,20 @@ def resv_hora(request):
     return render(request, 'resv_hora.html', data)
 
 
+def detalle_reserva(request, idhrs_dispo):
+    horasdisponibles = get_object_or_404(HrsDispo, idhrs_dispo=idhrs_dispo)
+    reserva = Reserva.objects.all()
+    data = {
+        'reserva': reserva,
+        'form': ReservaForm(instance=horasdisponibles)
+    }
+    if request.method == 'POST':
+        formulario = ReservaForm(
+            data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            horasdisponibles.delete()
+            return redirect(to="resv_hora")
+        data["form"] = formulario
+
+    return render(request, 'reservarCliente.html', data)

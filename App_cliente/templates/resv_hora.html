@@ -12,7 +12,7 @@
   <table class="table table-striped mt-5 shadow  bg-body rounded">
     <thead class="table-info">
       <tr>
-        <th class="text-center" scope="col">Detalle</th>
+        <th class="text-center" scope="col">Horas Disponibles</th>
         <th scope="col">Precio</th>
         <th scope="col">Accion</th>
       </tr>
@@ -44,7 +44,9 @@
           </div>
         </td>
         <td class="align-middle">$ {{ di.precio }}</td>
-        <td class="align-middle"><button class="btn btn-info shadow p-2  bg-body rounded ">Reservar Hora</button></td>
+        <td> 
+          <a href="{% url 'reservarCliente' di.idhrs_dispo %}" class=" btn btn-warning m-1">Reservar Hora</a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
