@@ -93,8 +93,9 @@ def detalle_reserva(request, idhrs_dispo):
             data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Hora Reservada Correctamente")
             horasdisponibles.delete()
             return redirect(to="resv_hora")
         data["form"] = formulario
 
-    return render(request, 'reservarCliente.html', data)
+    return render(request, 'reservarCliente.html', data) 

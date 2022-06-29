@@ -2,14 +2,11 @@
 {% load static %} 
 {% block title %} Reserva horas {% endblock %} 
 {% block contenido %}
-<h1>
-    Detalle Reserva
-</h1>
 
 
 
 <div class="container mt-3">
-    <h2>Detalle Reserva</h2>
+    <h4>Detalle Reserva</h4>
 </div>
 <script src="{% static 'js/calendar.js' %}"></script>
 
@@ -20,7 +17,7 @@
                 <div class="col-12 col-md-6 offset-md-3">
                     <div class="card">
                         <div class="card-body">
-                            <h2 class="modal-title">Editar</h2>
+                            <h4 class="modal-title">Detalle reserva</h4>
                             <hr>
 
                             <form action="" method="POST" enctype="multipart/form-data">
@@ -28,8 +25,8 @@
                                 {{ form | crispy }}
                                 <div class="modal-footer">
                                     <button type="submit" value="Guardar" class="btn btn-primary">Reservar</button>
-                                    <button  type="reset" value="Cancelar" class="btn btn-secondary">Cancelar Cambios</button>
-                                    <a href="{% url 'resv_hora' %}" class="btn btn-warning"  > Volver</a>
+                                    
+                                    <a href="{% url 'resv_hora' %}" class="btn btn-danger"> Cancelar</a>
 
                                 </div>
                             </form>

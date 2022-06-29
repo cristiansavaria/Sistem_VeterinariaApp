@@ -6,6 +6,7 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+from datetime import date, datetime
 from django.db import models
 
 
@@ -332,7 +333,8 @@ class HrsDispo(models.Model):
     fecha = models.DateField(blank=True, null=True)
     hora = models.TimeField(blank=True, null=True)
     detalle = models.CharField(max_length=45, blank=True, null=True)
-    fec_creacion = models.DateTimeField(blank=True, null=True)
+    today = datetime.today().now()
+    fec_creacion = models.DateTimeField(blank=True, null=True, default=today)
     precio = models.IntegerField(blank=True, null=True)
     activo = models.IntegerField(blank=True, null=True, default = 1)
     servicio_id_ser = models.ForeignKey('Servicio', models.DO_NOTHING, db_column='servicio_id_ser')
@@ -340,6 +342,7 @@ class HrsDispo(models.Model):
 
     class Meta:
         managed = False
+    
         db_table = 'hrs_dispo'
 
 
