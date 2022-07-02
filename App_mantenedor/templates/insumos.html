@@ -90,7 +90,10 @@
     </div>
   </div>
 </div>           
-  <table class="table table-striped">
+<td> 
+  <a href="{% url 'export-pdf' %}" class="btn btn-info m-1">Generar Reporte</a>
+</td>
+<table class="table table-striped">
     <thead class="table-primary">
         <tr>
           
@@ -110,6 +113,7 @@
           <td> 
             <a href="{% url 'modificar_insumo' i.id_insumo %}" class="btn btn-info m-1">Editar</a>
           </td>
+          
           {% endif %}
           {% if perms.App_mantenedor.delete_insumo %} 
           <td>

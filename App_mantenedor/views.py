@@ -9,9 +9,26 @@ from .forms import ClienteForm, InsumoForm, ProcedimientoPForm, MedicoForm, Paci
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib import messages
-
-
+from weasyprint import HTML
+from weasyprint.text.fonts import FontConfiguration
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 # Create your views here.
+
+def export_pdf(request):
+
+    context = {}
+    html = render_to_string("report-pdf.html", context)
+
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = "inline; report.pdf"
+
+    font_config = FontConfiguration()
+    HTML(string=html).write_pdf(response, font_config=font_config)
+
+    return response
+
+
 
 
 def login(request):
@@ -443,5 +460,7 @@ def custom_permission_denied_view(request, exception=None):
 
 def custom_bad_request_view(request, exception=None):
     return render(request, "errors/400.html", {})
+
+
 
 

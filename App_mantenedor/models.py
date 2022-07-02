@@ -350,16 +350,18 @@ class HrsDispo(models.Model):
     
 class Reserva(models.Model):
     id_res = models.AutoField(db_column='id_Res', primary_key=True)  # Field name made lowercase.
+    rut_client = models.CharField(max_length=45, blank=True, null=True)
+    nom_cli = models.CharField(max_length=45, blank=True, null=True)
+    precio = models.IntegerField(blank=True, null=True)
     fecha = models.DateField()
     hora = models.TimeField()
     detalle = models.CharField(max_length=45)
     fec_creacion = models.DateTimeField()
-    precio = models.IntegerField(blank=True, null=True)
+    
     servicio_id_ser = models.ForeignKey('Servicio', models.DO_NOTHING, db_column='servicio_id_ser')
     activo = models.IntegerField(blank=True, null=True)
     empleado_id_emp = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='empleado_id_emp', blank=True, null=True)
-    rut_client = models.CharField(max_length=45, blank=True, null=True)
-    nom_cli = models.CharField(max_length=45, blank=True, null=True)
+    
 
     class Meta:
         managed = False
