@@ -180,7 +180,15 @@ def insumos(request):
 
 @login_required()
 def reserva_horas(request):
+    busqueda = request.GET.get("buscar")
+    
     reserva = Reserva.objects.all()
+    print(busqueda)
+    if busqueda:
+        reserva = Reserva.objects.filter(
+            Q(rut_client__icontains=busqueda)
+        ).distinct()
+    
     data = {
         'reserva': reserva,
         'form': ReservaForm()
@@ -464,3 +472,8 @@ def custom_bad_request_view(request, exception=None):
 
 
 
+def eliminar_reserva(request, id_res):
+    reserva = get_object_or_404(Reserva, id_res=id_res)
+    reserva.delete()
+    messages.success(request, 'Reserva Eliminada Correctamente')
+    return redirect(to="reserva_horas")

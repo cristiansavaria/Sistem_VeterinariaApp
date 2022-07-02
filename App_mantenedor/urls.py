@@ -2,7 +2,7 @@ from django import views
 from django.urls import path
 
 
-from .views import clientes, contacto_recibido, eliminar_cliente, export_pdf, modificar_proced, procedimientos,\
+from .views import clientes, contacto_recibido, eliminar_cliente, eliminar_reserva, export_pdf, modificar_proced, procedimientos,\
  eliminar_empleado, eliminar_insumo, eliminar_paciente, index, insumos, login, modificar_cliente, modificar_insumo,\
   modificar_medico, modificar_paciente, modificar_reserva, pacientes, reserva_horas, medico, horas_disponibles,\
    modificar_hdisponible, reservar_hdispo
@@ -28,6 +28,8 @@ urlpatterns = [
     path('eliminar-medico/<id_emp>/', eliminar_empleado, name="eliminar_medico"), 
     path('eliminar-cliente/<id_rut>/', eliminar_cliente, name="eliminar_cliente"), 
     path('eliminar-paciente/<id_pac>/', eliminar_paciente, name="eliminar_paciente"),
+    path('eliminar_reserva/<id_res>/', eliminar_reserva, name="eliminar_reserva"),
+
     path('procedimientos/', procedimientos, name="procedimientos"),
     path('reservar/<idhrs_dispo>/', reservar_hdispo, name='reservar'),
     path('pdfReport/', export_pdf, name="export-pdf"),
