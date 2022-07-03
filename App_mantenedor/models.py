@@ -357,7 +357,6 @@ class Reserva(models.Model):
     hora = models.TimeField()
     detalle = models.CharField(max_length=45)
     fec_creacion = models.DateTimeField()
-    
     servicio_id_ser = models.ForeignKey('Servicio', models.DO_NOTHING, db_column='servicio_id_ser')
     activo = models.IntegerField(blank=True, null=True)
     empleado_id_emp = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='empleado_id_emp', blank=True, null=True)
